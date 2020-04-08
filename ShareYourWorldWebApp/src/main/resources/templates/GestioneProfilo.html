@@ -1,14 +1,13 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://www.dafont.com/it/sambi-lemon.font">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"> 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Ricerca contenuto</title>
-        <link href="CSS/BarraRicercaCSS.css" rel="stylesheet " type="text/css">
+        <title>SchedaPersonale</title>
+        
+        <link href="CSS/CSSGestioneProfilo.css" rel="stylesheet " type="text/css">
     </head>
    
     <body>
@@ -52,17 +51,28 @@
                     </ul>
                         
                      </nav>
-                
-     </div>
-     <div id="search">
-       <form class="example" action="action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-             </form>
+                       
+                        
+                        
+                    </div>
 
-    </div>
+        <div class="container">  
+            <form class="form-signin" action="loginServlet" method="GET">
+				<img class="circolare" src="http://www.innovatoripa.it/sites/default/files/styles/user_full/public/default_images/765-default-avatar_4.png?itok=-1-90-7C "/>
+				<p2><a href = "cambiapassword.com" > Cambia immagine</a></p2>
 
+				<p>Scheda personale</p>
+				
+				<label for="fname">Username:</label><br>
+				<input type="text" id="fname" name="fname" value="getUsername"><br>
+				<label for="lname">E-mail:</label><br>
+				<input type="text" id="lname" name="email" value="getEmail">
+				<label for="lname">Password:</label><br>
+				<input type="text" id="lname" name="password" value="getPassword"><br> <p1><a href = "changePassword.com">Vuoi cambiare la password? Clicca qui</a></p1>
 
+            </form>
+        
+        </div>
     </body>
 
 </html>    
