@@ -17,9 +17,9 @@ public class UserController {
 		return "LogIn";
 			
 	}
-	@GetMapping("/Registrazione")
+	@GetMapping("/registrazione")
 	public String registrazione (RegistrationForm registrationForm) {
-		return "Registrazione";
+		return "registrazione";
 			
 	}
 	
@@ -33,10 +33,10 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/Registrazione")
+	@PostMapping("/registrazione")
 	public String postRegistrazione (@Valid RegistrationForm registrationForm, BindingResult resReg) {
 		if(resReg.hasErrors())
-			return "Registrazione";
+			return "registrazione";
 		
 		return "HomePage_Accesso";
 		

@@ -5,8 +5,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>Registrati</title>
-        <script src="LogInFunction.js"></script>
-        <link href="CSS/CSSRegistrazione.css" rel="stylesheet " type="text/css">
+        <link href="css/CSSRegistrazione.css" rel="stylesheet " type="text/css">
     </head>
    
     <body>
@@ -19,7 +18,7 @@
                                
                    <nav class="navbar navbar-md">
                                    
-                   <div class="navbar-brand">Share Your World</div>
+                   <div class="navbar-brand">ShareYourWorld</div>
                                    
                    <ul class="nav">
                                    
@@ -58,12 +57,12 @@
 
         <div class="container">
         
-            <form class="form-signin" th:action="@{/Registrazione}"  method="POST" th:object="${registrationForm}">
+            <form class="form-signin" th:action="@{/registrazione}" method="POST" th:object="${registrationForm}">
                 <p>Registrati</p>
-                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}>
-                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}>
-                <input type="password" id="txtpswcontrollo" class="form-control" name="passwordControllo" value="" placeholder="Ripeti password" th:field="*{confPassword}>
-                <input type="text" id="txtemail" class="form-control" name="email" value="" placeholder="E-mail" th:field="*{email}> <br>
+                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}">
+                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}">
+                <input type="password" id="txtpswcontrollo" class="form-control" name="passwordControllo" value="" placeholder="Ripeti password" th:field="*{confPassword}">
+                <input type="text" id="txtemail" class="form-control" name="email" value="" placeholder="E-mail" th:field="*{email}"> <br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="javascript:LogInFunction()">
                     Registrati
                 </button>

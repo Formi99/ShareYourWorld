@@ -2,14 +2,14 @@
 body {
     padding-top: 120px;
     padding-bottom: 40px;
-    background-image: url(https://cdn.wallpapersafari.com/55/79/v6duCO.jpg);
+    background-image: url("/Immagini/sfondoprincipale.jpg");
     
   }
 
   @font-face {
-    font-family: 'adventureregular';
-    src: url('fonts/adventure-webfont.woff2') format('woff2'),
-         url('fonts/adventure-webfont.woff') format('woff');
+    font-family: 'sea_horsesregular';
+    src: url('fonts/sea_horses-webfont.woff2') format('woff2'),
+         url('fonts/sea_horses-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -21,8 +21,8 @@ body {
 
   background-position: top;
   background-size: cover;
-  /background-attachment: fixed;/
-  /background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');/
+  background-attachment: fixed;/
+  background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');/
   background-repeat: no-repeat;
 
 }
@@ -33,7 +33,7 @@ body {
 }
 
 .banner .navbar-brand{
-  font-family: "adventureregular";
+ font-family: "sea_horsesregular";
   color: black;
   font-size: 60px;
   font-weight: 700;

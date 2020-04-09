@@ -25,10 +25,10 @@ public class RegistrationForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConfPassword() {
+	public String getconfPassword() {
 		return confPassword;
 	}
-	public void setConfPassword(String confPassword) {
+	public void setconfPassword(String confPassword) {
 		this.confPassword = confPassword;
 	}
 	public String getEmail() {
