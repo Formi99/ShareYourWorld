@@ -17,12 +17,26 @@ public class UserController {
 		return "LogIn";
 			
 	}
+	@GetMapping("/Registrazione")
+	public String registrazione (RegistrationForm registrationForm) {
+		return "Registrazione";
+			
+	}
 	
 	
 	@PostMapping("/LogIn")
 	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin) {
 		if(resLogin.hasErrors())
 			return "LogIn";
+		
+		return "HomePage_Accesso";
+		
+	}
+	
+	@PostMapping("/Registrazione")
+	public String postRegistrazione (@Valid RegistrationForm registrationForm, BindingResult resReg) {
+		if(resReg.hasErrors())
+			return "Registrazione";
 		
 		return "HomePage_Accesso";
 		

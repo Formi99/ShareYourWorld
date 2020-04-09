@@ -4,6 +4,14 @@ body {
     background-image: url(https://cdn.wallpapersafari.com/55/79/v6duCO.jpg);
       
   }
+  @font-face {
+    font-family: 'adventureregular';
+    src: url('fonts/adventure-webfont.woff2') format('woff2'),
+         url('fonts/adventure-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 }
 .banner{
   height: 100vh;
@@ -24,8 +32,9 @@ body {
 }
 
 .banner .navbar-brand{
+  font-family: "adventureregular";
   color: black;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 700;
   margin-left: 1%;
   
@@ -132,11 +141,12 @@ img{
     height: 100px;
     width: 100px;
     position: absolute;
+    left: 390px;
     
 }
 p2{
     position: absolute;
-    top:290;
+    top:305;
     left:390px;
     font-family: Ubuntu;
     font-size: 12px;

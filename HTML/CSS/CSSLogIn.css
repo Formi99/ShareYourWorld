@@ -5,6 +5,14 @@ body {
     background-image: url(https://cdn.wallpapersafari.com/55/79/v6duCO.jpg);
     
   }
+  @font-face {
+    font-family: 'adventureregular';
+    src: url('fonts/adventure-webfont.woff2') format('woff2'),
+         url('fonts/adventure-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 
 .banner{
@@ -25,8 +33,9 @@ body {
 }
 
 .banner .navbar-brand{
+  font-family: "adventureregular";
   color: black;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 700;
   margin-left: 1%;
   
@@ -87,7 +96,7 @@ body {
     max-width: 250px;
     padding: 15px;
     margin: 10 auto;
-      margin-top:80px;
+      margin-top:60px;
   }
 
   .form-signin .form-signin-heading, .form-signin {
@@ -142,12 +151,15 @@ body {
     position: absolute;
     left: 540px;
   }
-  p3{
+  #op{
     font-family: Ubuntu;
     font-size: 13px;
-    position: absolute;
-    top: 440px;
+    position: fixed;
+    top: 434px;
     left: 610px;
     color: grey;
 
+  }
+  .container{
+    top: 200px;
   }
