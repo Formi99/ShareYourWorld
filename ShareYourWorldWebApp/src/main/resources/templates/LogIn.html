@@ -59,11 +59,11 @@
 
         <div class="container">
         
-            <form class="form-signin" action="loginServlet" method="GET">
+            <form class="form-signin" th:action="@{/LogIn}" method="POST" th:object="${logInForm}">
                 <p>Accedi</p>
-                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username">
-                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password"><br>
-                <button class="btn btn-lg btn-primary btn-block"  type="submit" onclick="javascript:LogInFunction()">
+                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}">
+                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}"><br>
+                <button class="btn btn-lg btn-primary btn-block"  type="submit" >
                     Accedi
                 </button>
 

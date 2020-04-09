@@ -1,14 +1,14 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://www.dafont.com/it/sambi-lemon.font">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"> 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Pagina di LogIn</title>
-        <script src="LogInFunction.js"></script>
-        <link href="CSS/CSSLogIn.css" rel="stylesheet " type="text/css">
+        <title>Ricerca contenuto</title>
+        <link href="CSS/BarraRicercaCSS.css" rel="stylesheet " type="text/css">
     </head>
    
     <body>
@@ -52,29 +52,17 @@
                     </ul>
                         
                      </nav>
-                       
-                        
-                        
-                    </div>
+                
+     </div>
+     <div id="search">
+       <form class="example" action="action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+             </form>
 
-        <div class="container">
-        
-            <form class="form-signin" action="loginServlet" method="GET">
-                <p>Accedi</p>
-                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username">
-                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password"><br>
-                <button class="btn btn-lg btn-primary btn-block"  type="submit" onclick="javascript:LogInFunction()">
-                    Accedi
-                </button>
+    </div>
 
-                <p1><a href = "Haidimenicatolapsw.com"> Hai dimenticato la password? Clicca qui</a></p1>
-                <p3>oppure</p3><br><br>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" >
-                    Registrati
-                </button>
-            </form>
-        
-        </div>
+
     </body>
 
 </html>    
