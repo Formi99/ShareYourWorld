@@ -2,13 +2,13 @@
 body {
     padding-top: 120px;
     padding-bottom: 40px;
-    background-image: url("/Immagini/sfondoprincipale.jpg");
+    background-image: url(/Immagini/sfondoprincipale.jpg);
     
   }
   @font-face {
-    font-family: 'adventureregular';
-    src: url('/fonts/adventure-webfont.woff2') format('woff2'),
-         url('/fonts/adventure-webfont.woff') format('woff');
+    font-family: 'sea_horsesregular';
+    src: url('fonts/sea_horses-webfont.woff2') format('woff2'),
+         url('fonts/sea_horses-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -21,8 +21,8 @@ body {
 
   background-position: top;
   background-size: cover;
-  /background-attachment: fixed;/
-  /background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');/
+  background-attachment: fixed;
+  background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');/
   background-repeat: no-repeat;
 
 }
@@ -33,7 +33,7 @@ body {
 }
 
 .banner .navbar-brand{
-   font-family: "adventureregular";
+  font-family: "sea_horsesregular";
   color: black;
   font-size: 60px;
   font-weight: 700;
@@ -66,7 +66,7 @@ body {
    border-right:none;
    box-shadow:inset 2px -3px rgba(0,0,0,0.15);
   }
-  .fullscreen_bg {
+    .fullscreen_bg {
     position: fixed;
     top: 0;
     right: 0;
@@ -76,49 +76,46 @@ body {
     background-position: 50% 50%;
  
   }
-    
 
-    * {
-        box-sizing: border-box;
-        
-        height: 40px;
-        
-      }
     
-      form.example input[type=text] {
-        padding: 10px;
-        font-size: 17px;
-        border: 1px solid grey;
-        float: left;
-        width: 80%;
-      
-      }
+  .center{
+    justify-content: center !important;
+    display: flex!important;
 
-      form.example button {
-        float: left;
-        width: 20%;
-        padding: 10px;
-        background: #2196F3;
-        color: white;
-        font-size: 17px;
-        border: 1px solid grey;
-        border-left: none; 
-        cursor: pointer;
-      }
-      
-      form.example button:hover {
-        background: #0b7dda;
-      }
-      
-      
-      form.example::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-      #search{
-          width: 800px;
-          margin: 0 auto;
-          margin-top: 200px;
-      }
+}
+
+.outter_search_box{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px;
+    border:1px solid black;
+    width:450px;
+    box-shadow:0px 1px 3px transparent;
+    transition: width 0.4s linear ;
+
+}
+
+.searchbar{
+    border:none;
+    background-color: transparent;
+}
+
+.form-control:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+.outter_search_box:focus-within {
+  
+    width:600px;
+    transition: width 0.4s linear;
+    border: 1px solid #ccc;
+}
+
+
+
+
       

@@ -22,6 +22,16 @@ public class UserController {
 		return "registrazione";
 			
 	}
+	@GetMapping("/SceltaCatalogo")
+	public String sceltacatalogo () {
+		return "SceltaCatalogo";
+			
+	}
+	@GetMapping("/BarraRicerca")
+	public String barraricerca () {
+		return "BarraRicerca";
+			
+	}
 	
 	
 	@PostMapping("/LogIn")
