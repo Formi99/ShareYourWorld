@@ -37,6 +37,11 @@ public class UserController {
 		return "BarraRicerca";
 			
 	}
+	@GetMapping("/GestisciAbbonamento")
+	public String gestabb () {
+		return "GestisciAbbonamento";
+			
+	}
 	
 	
 	@PostMapping("/LogIn")

@@ -1,28 +1,108 @@
 <html>
-	<head>
-		<title>GestioneAbbonamento</title>
-		<link rel="stylesheet" type="text/css" href="StilePag.css" />
-		<h1>Gestisci Profilo</h1>
-	</head>
-	<body>
-		<h2>Dati Abbonamento</h2>
-		<h3>Scegli tipo di abbonamento</h3>
-		<div class="dropdown">
-			<button class="dropbtn">Dropdown</button>
-			<div class="dropdown-content">
-				<a href="#">Free</a>
-				<a href="#">Silver</a>
-				<a href="#">Gold</a>
-			</div>
-		</div>
-		<h4>Inserisci modalità di pagamento</h4>
-		<a href="AggiungiPagamento.html">
-			<button class="pagamento">Aggiungi carta</button>
-		</a>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://www.dafont.com/it/sambi-lemon.font">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"> 
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Gestione abbonamento</title>
+        <link href="css/GestionePagamento.css" rel="stylesheet " type="text/css">
+    </head>
+   
+    <body>
+        
+        <div id="fullscreen_bg" class="fullscreen_bg">
+         <div class="container-fluid banner">
+            
+        <div class="row">
+          <div class="col-md-12">
+                        
+            <nav class="navbar navbar-md">
+                            
+            <div class="navbar-brand">ShareYourWorld</div>
+                            
+            <ul class="nav">
+                            
+            <li class="nav-item">
+                                
+                <a class="nav-link" href="#">HOME</a>
+                                
+                 </li>
+                            
+                 <li class="nav-item">
+                                
+                   <a class="nav-link" href="#">PROFILO</a>
+                                
+                   </li>
+                            
+                    <li class="nav-item">
+                                
+                    <a class="nav-link" href="#">MESSAGGI</a>
+                                
+                    </li>
+                            
+                    <li class="nav-item">
+                                
+                    <a class="nav-link" href="#">HOME</a>
+                                
+                    </li>
+                            
+                    </ul>
+                        
+                     </nav>
+                       
+                        
+                        
+					</div>
+					
+					<h3>Scegli tipo di abbonamento che vuoi acquistare:</h3>
+
+					<div class="selezioneabb">	
+					
+					<label class="container">Silver (€15,90)
+						<input type="checkbox" checked="checked">
+						<span class="checkmark"></span>
+					  </label>
+					  
+					  <label class="container">Gold (€29,90)
+						<input type="checkbox">
+						<span class="checkmark"></span>
+					  </label>
+					
+					</div>
+					
+	<div class = "pagamento">				
+<form action="" method="POST"  id="checkout-form">
+  
+	<div>
+		<label for="creditCard">Card Number</label>
+		<input type="text" name="creditCard" id="creditCard">
+	</div>
+   
+	<div>
+		<label for="cvv">Security Code</label>
+		<input type="text" name="cvv" id="cvv">
+	</div>
 	
+	<div>
+	  <label for="Expiration">Exp. (MM/YYYY)</label>
+		<input type="text" name="exp-month" id="exp-month" size="2">
+		<span> / </span>
+		<input type="text" name="exp-year" id="exp-year" size="4">
+	</div>
+	<br>
+  
+	<button type="submit" id="submit-button">Acquista</button>
+
 	
-	</body>
+  	</form>
+  	</div>	
+</div>
+					
+	<h2>Dati Abbonamento</h2>
+					
 
-
-
-</html>
+		</body>		
+		
+</html>		
