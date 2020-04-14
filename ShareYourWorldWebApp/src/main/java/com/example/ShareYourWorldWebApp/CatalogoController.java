@@ -10,43 +10,43 @@ import com.example.ShareYourWorldWebApp.*;
 
 @RestController
 public class CatalogoController {
-	ArrayList<Libro> listaLibri=new ArrayList();
+	ArrayList<AnimeManga> listaAnimeManga=new ArrayList();
 	
 	public CatalogoController() {
-		Libro l1=new Libro();
-		l1.setTitolo("Naruto 1° serie");
-		l1.setAnno(2002);
-		l1.setEpisodi(220);
-		l1.setPaese("Giappone");
-		l1.setGenere("Avventura, Azione, Fantasy, Bildungsroman");
+		AnimeManga a1=new AnimeManga();
+		a1.setTitolo("Naruto 1° serie");
+		a1.setAnno(2002);
+		a1.setEpisodi(220);
+		a1.setPaese("Giappone");
+		a1.setGenere("Avventura, Azione, Fantasy, Bildungsroman");
 		
-		Libro l2=new Libro();
-		l2.setTitolo("Naruto Shippuden");
-		l2.setAnno(2007);
-		l2.setEpisodi(500);
-		l2.setPaese("Giappone");
-		l2.setGenere("Shonen, Azione, Avventura");
+		AnimeManga a2=new AnimeManga();
+		a2.setTitolo("Naruto Shippuden");
+		a2.setAnno(2007);
+		a2.setEpisodi(500);
+		a2.setPaese("Giappone");
+		a2.setGenere("Shonen, Azione, Avventura");
 		
-		Libro l3=new Libro();
-		l3.setTitolo("Naruto next generations:Boruto");
-		l3.setAnno(2016);
-		l3.setEpisodi(151);
-		l3.setPaese("Giappone");
-		l3.setGenere("Fantasy, Azione, Avventura");
+		AnimeManga a3=new AnimeManga();
+		a3.setTitolo("Naruto next generations:Boruto");
+		a3.setAnno(2016);
+		a3.setEpisodi(151);
+		a3.setPaese("Giappone");
+		a3.setGenere("Fantasy, Azione, Avventura");
 		
-		listaLibri.add(l1);
-		listaLibri.add(l2);
-		listaLibri.add(l3);
+		listaAnimeManga.add(a1);
+		listaAnimeManga.add(a2);
+		listaAnimeManga.add(a3);
 	}
 	
 	@GetMapping("/allbook")
-	public ArrayList<Libro> getAllUsers() {
-		return listaLibri;
+	public ArrayList<AnimeManga> getAllUsers() {
+		return listaAnimeManga;
 	}
 	
 	@GetMapping("/bookbytitolo")
-	public Libro getUserByCF(@RequestParam("titolo") String titolo) {
-		for(Libro l:listaLibri) {
+	public AnimeManga getUserByCF(@RequestParam("titolo") String titolo) {
+		for(AnimeManga l:listaAnimeManga) {
 			if(titolo.equals(l.getTitolo())) {
 				return l;
 			}
