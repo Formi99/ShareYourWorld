@@ -17,6 +17,11 @@ public class UserController {
 		return "LogIn";
 			
 	}
+	@GetMapping("/GestioneProfilo")
+	public String gestioneprofilo () {
+		return "GestioneProfilo";
+			
+	}
 	@GetMapping("/registrazione")
 	public String registrazione (RegistrationForm registrationForm) {
 		return "registrazione";

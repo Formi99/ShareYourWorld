@@ -1,9 +1,10 @@
-
 body {
     padding-top: 120px;
     padding-bottom: 40px;
     background-image: url("/Immagini/sfondoprincipale.jpg");
-    
+    position: relative;
+    z-index: -1;
+      
   }
 
   @font-face {
@@ -14,28 +15,30 @@ body {
     font-style: normal;
 
 }
-
-
-
 .banner{
   height: 100vh;
   width: 100%;
-
+  
+  
   background-position: top;
   background-size: cover;
-  /background-attachment: fixed;/
-  /background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');/
+  background-attachment: fixed;
+  background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');
   background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
 
 }
 
 .banner .navbar{
   margin-top: 1%;
+    position: relative;
+  
   
 }
 
 .banner .navbar-brand{
-  font-family: "sea_horsesregular";
+ font-family: "sea_horsesregular";
   color: black;
   font-size: 60px;
   font-weight: 700;
@@ -66,7 +69,7 @@ body {
    border-bottom:none;
    border-left:none;
    border-right:none;
-   
+   box-shadow:inset 2px -3px rgba(0,0,0,0.15);
   }
 
   .fullscreen_bg {
@@ -119,7 +122,70 @@ body {
   width: 18%;
   height: auto;
 }
+.dropbtn {
+  background-color: rgb(211, 211, 211, 0.4);
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: solid black 1px;
+  cursor: pointer;
+  position: relative;
+ 
+}
+
+.dropbtn {
+  background-color: rgb(211, 211, 211, 0.4);
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: solid black 1px;
+  cursor: pointer;
+  position: relative;
+    z-index: 2;
+  
+ 
+}
 
 
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+     overflow: visible !important;
+}
 
 
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+  right: 0;
+     overflow: visible !important;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+     overflow: visible !important;
+}
+
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.dropdown:hover .dropbtn {
+  background-color: rgb(211, 211, 211, 0.4);
+{
