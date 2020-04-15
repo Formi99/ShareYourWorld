@@ -1,0 +1,190 @@
+body {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background-image: url("/Immagini/sfondoprincipale.jpg");
+    position: relative;
+    z-index: -1;
+      
+  }
+
+
+  @font-face {
+    font-family: 'sea_horsesregular';
+    src: url('fonts/sea_horses-webfont.woff2') format('woff2'),
+         url('fonts/sea_horses-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.banner{
+  height: 100vh;
+  width: 100%;
+  
+  
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
+  background:url('esempio-finitura-Supermatt-Grigio-Chiaro.jpg');
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+
+}
+
+.banner .navbar{
+  margin-top: 1%;
+    position: relative;
+  
+  
+}
+
+.banner .navbar-brand{
+ font-family: "sea_horsesregular";
+  color: black;
+  font-size: 60px;
+  font-weight: 700;
+  margin-left: 1%;
+  
+}
+
+.banner .nav{
+  margin-right: 10%;
+  
+}
+
+.banner .nav li a{
+  color: #aaa;
+  font-size: 1.2em;
+  
+}
+
+.banner .info{
+  margin-top:15%;
+  transform: translateY(-15%);
+}
+  .btn 
+  {
+   outline:0;
+   border:none;
+   border-top:none;
+   border-bottom:none;
+   border-left:none;
+   border-right:none;
+   box-shadow:inset 2px -3px rgba(0,0,0,0.15);
+  }
+  .btn:focus
+  {
+   outline:0;
+   -webkit-outline:0;
+   -moz-outline:0;
+  }
+  .fullscreen_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    
+  }
+  h2{
+    src: url("http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin");
+    font-size: 30px;
+    color: grey; 
+    font-family: Ubuntu;
+    position: absolute;
+    left: 100px;
+  }
+  h3{
+    src: url("http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin");
+    font-size: 20px;
+    color: black; 
+    font-family: Ubuntu;
+    position: absolute;
+    top: 170px;
+    right: 120px;
+  }
+   /* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  } 
+  .selezioneabb{
+    position: absolute;
+    top: 220px;
+    right: 350px;
+
+  }
+  .pagamento{
+      position: absolute;
+      top: 330px;
+      right: 230px;
+      max-width: 300px;
+      height: auto;
+  }
+  h2{
+      position: absolute;
+      top: 160px;
+      color: black;
+  }
