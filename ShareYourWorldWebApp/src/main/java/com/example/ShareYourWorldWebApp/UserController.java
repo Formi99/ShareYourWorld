@@ -42,6 +42,11 @@ public class UserController {
 		return "GestisciAbbonamento";
 			
 	}
+	@GetMapping("/CambiaPassword")
+	public String changepsw () {
+		return "CambiaPassword";
+			
+	}
 	
 	
 	@PostMapping("/LogIn")

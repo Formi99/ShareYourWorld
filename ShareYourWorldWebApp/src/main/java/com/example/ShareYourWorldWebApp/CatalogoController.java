@@ -1,4 +1,4 @@
-package com.example.ShareYourWorldWebApp;
+/*package com.example.ShareYourWorldWebApp;
 
 import java.util.ArrayList;
 
@@ -55,3 +55,4 @@ public class CatalogoController {
 		return null;
 	}
 }
+*/
