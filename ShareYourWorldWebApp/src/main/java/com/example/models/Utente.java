@@ -1,6 +1,8 @@
 package com.example.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -10,8 +12,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "utente")
 public class Utente {
-	
 	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private int Id;
+	
 	@Size(min=3, max=15, message = "Nome deve esser tra 4 e 15 caratteri")
 	@NotNull(message = "Nome deve esser inserito")
 	//@Column(name="Username")
@@ -38,14 +42,22 @@ public class Utente {
 	private String email;
 
 	
-	public Utente(String username,String nome,String cognome,String password,String email){
-		
+	public Utente(int Id,String username,String nome,String cognome,String password,String email){
+		this.Id=Id;
 		this.username=username;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.password=password;
 		this.email=email;
 		
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
 	}
 
 	public String getUsername() {
