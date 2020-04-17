@@ -32,5 +32,23 @@ public class UtentejdbcDao {
     }
 	
 	
+	public List<Utente> Register(String username, String password, String email) {
+        return jdbcTemplate.query(
+                "insert into utente(Username,email,password) values (?,?,?)",
+                new Object[]{username, password,email},
+                (rs, rowNum) ->
+                        new Utente(
+                                rs.getInt("Id"),
+                                rs.getString("username"),
+                                rs.getString("password"),
+                                rs.getString("email"),
+                                rs.getString("nome"),
+                                rs.getString("cognome")
+                        )
+        );
+    }
+	
+	
+	
 	
 }

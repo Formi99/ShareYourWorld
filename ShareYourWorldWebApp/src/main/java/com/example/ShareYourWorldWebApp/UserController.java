@@ -2,14 +2,26 @@ package com.example.ShareYourWorldWebApp;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.dao.UtenteDao;
+import com.example.dao.UtentejdbcDao;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	private UtenteDao userRepositery;
+	
+	@Autowired
+	private UtentejdbcDao userJdbcRepository;
+	
+	
+	
 	
 	
 	@GetMapping("/LogIn")
@@ -47,6 +59,7 @@ public class UserController {
 		return "CambiaPassword";
 			
 	}
+	
 	
 	
 	@PostMapping("/LogIn")

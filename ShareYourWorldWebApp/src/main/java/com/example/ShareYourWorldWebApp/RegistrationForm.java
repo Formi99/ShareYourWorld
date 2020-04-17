@@ -13,6 +13,7 @@ public class RegistrationForm {
 	String email;
 	
 	
+	
 	public String getUsername() {
 		return username;
 	}
