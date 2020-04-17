@@ -20,6 +20,7 @@
                                     <div class="form-group">
                                         <label for="name">Name</label><br>
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name">
+                                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
                                     </div>
                                 </div>
                             </div>
@@ -29,6 +30,7 @@
                                         <label for="ccnumber">Credit Card Number</label>
                                         <div class="input-group">
                                             <input class="form-control" type="text" placeholder="0000 0000 0000 0000" autocomplete="email">
+                                            <p th:if="${#fields.hasErrors('numeroCarta')}" th:errors="*{numeroCarta}" />
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="mdi mdi-credit-card"></i>
@@ -77,6 +79,7 @@
                                     <div class="form-group">
                                         <label for="cvv">CVV/CVC</label><br>
                                         <input class="form-control" id="cvv" type="text" placeholder="123"><br>
+                                        <p th:if="${#fields.hasErrors('codiceCarta')}" th:errors="*{username}" />
                                     </div>
                                 </div>
                             </div>
