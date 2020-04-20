@@ -65,23 +65,21 @@
                     </div>
 
         <div class="container">  
-            <form class="form-signin" action="loginServlet" method="GET">
-				<img class="circolare" src="http://www.innovatoripa.it/sites/default/files/styles/user_full/public/default_images/765-default-avatar_4.png?itok=-1-90-7C "/>
-				<p2><a href = "cambiapassword.com" > Cambia immagine</a></p2>
-
+            
+	<form class="form-signin" th:action="@{/GestioneProfilo}" method="GET" th:object="${gestioneProfiloForm}">
 				<p>Scheda personale</p>
 				
-				<label for="fname">Username:</label><br>
-        <input type="text" id="fname" name="fname" value="getUsername"><br>
+	<label for="fname">Username:</label><br>
+        <input type="text" id="fname" th:field="*{username}"name="fname" th:value="${session.getAttribute('Username')}" ><br>
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
 				<label for="lname">E-mail:</label><br>
-        <input type="text" id="lname" name="email" value="getEmail">
+        <input type="text" id="lname" name="email" th:field="*{email}" th:value="${session.getAttribute('email')}">
         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
 				<label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="password" value="getPassword"><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
+        <input type="text" id="lname" name="password" th:field="*{password}"th:value="${session.getAttribute('Password')}"><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
 
-            </form>
+      </form>
         
         </div>
  
