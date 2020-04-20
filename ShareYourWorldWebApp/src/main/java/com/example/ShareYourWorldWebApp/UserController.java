@@ -2,14 +2,20 @@ package com.example.ShareYourWorldWebApp;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.Repository.UserRepository;
+import com.example.models.Utente;
+
 
 @Controller
 public class UserController {
+	@Autowired
+    UserRepository userRepository;
 	
 	
 	@GetMapping("/LogIn")
@@ -58,13 +64,19 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/registrazione")
-	public String postRegistrazione (@Valid RegistrationForm registrationForm, BindingResult resReg) {
-		if(resReg.hasErrors())
-			return "registrazione";
-		
-		return "HomePage_Accesso";
-		
-	}
+	  @PostMapping("/registrazione")
+	    public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
+	        if(result.hasErrors())
+	            return "index";
+
+	        Utente u = new Utente();
+	        u.setNome(registrationForm.getNome());
+	        u.setCognome(registrationForm.getCognome());
+	        u.setUsername(registrationForm.getUsername());
+	        u.setPassword(registrationForm.getPassword());
+	        u.setEmail(registrationForm.getEmail());
+	        userRepository.save(u);
+	        return"DatiSalvati";
+	    }
 
 }

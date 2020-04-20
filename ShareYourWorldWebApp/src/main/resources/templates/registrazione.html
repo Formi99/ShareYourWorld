@@ -59,6 +59,8 @@
         
             <form class="form-signin" th:action="@{/registrazione}" method="POST" th:object="${registrationForm}">
                 <p>Registrati</p>
+                <input type="text" id="txtname" class="form-control" name="nome" value="" placeholder="Nome" th:field="*{nome}">
+                <input type="text" id="txtlastnm" class="form-control" name="cognome" value="" placeholder="Cognome" th:field="*{cognome}">
                 <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}">
                 <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}">
                 <input type="password" id="txtpswcontrollo" class="form-control" name="passwordControllo" value="" placeholder="Ripeti password" th:field="*{confPassword}">

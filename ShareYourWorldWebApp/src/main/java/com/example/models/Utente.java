@@ -42,6 +42,10 @@ public class Utente {
 	private String email;
 
 	
+	public Utente() {
+		
+	}
+
 	public Utente(int Id,String username,String nome,String cognome,String password,String email){
 		this.Id=Id;
 		this.username=username;

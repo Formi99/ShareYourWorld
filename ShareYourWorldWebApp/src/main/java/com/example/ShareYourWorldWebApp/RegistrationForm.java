@@ -3,7 +3,12 @@ package com.example.ShareYourWorldWebApp;
 import javax.validation.constraints.Size;
 
 public class RegistrationForm {
-	@Size(min=3, max=10)
+	@Size(min=3, max=20)
+	String nome;
+	
+	@Size(min=3, max=20)
+	String cognome;
+	@Size(min=3, max=20)
 	String username;
 	@Size(min=3, max=20)
 	String password;
@@ -12,6 +17,19 @@ public class RegistrationForm {
 	@Size(min=7, max=25)
 	String email;
 	
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCognome() {
+		return cognome;
+	}
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
 	
 	public String getUsername() {
 		return username;
