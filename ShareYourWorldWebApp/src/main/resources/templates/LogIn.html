@@ -61,8 +61,10 @@
         
             <form class="form-signin" th:action="@{/LogIn}" method="POST" th:object="${logInForm}">
                 <p>Accedi</p>
-                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}">
-                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}"><br>
+                <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" ><br>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
+                <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" ><br>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                 <button class="btn btn-lg btn-primary btn-block"  type="submit" >
                     Accedi
                 </button>

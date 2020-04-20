@@ -30,9 +30,16 @@ public class UtentejdbcDao {
         );
     }
 	
+<<<<<<< HEAD
 	public List<Utente> Register(String username, String password, String email) {
         return jdbcTemplate.query(
                 "insert into utente(Username,email,password) values (?,	?,?)",
+=======
+	
+	public List<Utente> Register(String username, String password, String email) {
+        return jdbcTemplate.query(
+                "insert into utente(Username,email,password) values (?,?,?)",
+>>>>>>> c43e07a396f06bb6194fdc487a91ecd24e27bff6
                 new Object[]{username, password,email},
                 (rs, rowNum) ->
                         new Utente(
@@ -45,5 +52,11 @@ public class UtentejdbcDao {
                         )
         );
     }
+<<<<<<< HEAD
+=======
+	
+	
+	
+>>>>>>> c43e07a396f06bb6194fdc487a91ecd24e27bff6
 	
 }

@@ -62,9 +62,13 @@
                 <input type="text" id="txtname" class="form-control" name="nome" value="" placeholder="Nome" th:field="*{nome}">
                 <input type="text" id="txtlastnm" class="form-control" name="cognome" value="" placeholder="Cognome" th:field="*{cognome}">
                 <input type="text" id="txtusn" class="form-control" name="username" value="" placeholder="Username" th:field="*{username}">
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
                 <input type="password" id="txtpsw" class="form-control" name="password" value="" placeholder="Password" th:field="*{password}">
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                 <input type="password" id="txtpswcontrollo" class="form-control" name="passwordControllo" value="" placeholder="Ripeti password" th:field="*{confPassword}">
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
                 <input type="text" id="txtemail" class="form-control" name="email" value="" placeholder="E-mail" th:field="*{email}"> <br>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
                 <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="javascript:LogInFunction()">
                     Registrati
                 </button>

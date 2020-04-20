@@ -8,14 +8,28 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+<<<<<<< HEAD
 import com.example.Repository.UserRepository;
 import com.example.models.Utente;
 
+=======
+import com.example.dao.UtenteDao;
+import com.example.dao.UtentejdbcDao;
+>>>>>>> c43e07a396f06bb6194fdc487a91ecd24e27bff6
 
 @Controller
 public class UserController {
 	@Autowired
     UserRepository userRepository;
+	
+	@Autowired
+	private UtenteDao userRepositery;
+	
+	@Autowired
+	private UtentejdbcDao userJdbcRepository;
+	
+	
+	
 	
 	
 	@GetMapping("/LogIn")
@@ -53,6 +67,7 @@ public class UserController {
 		return "CambiaPassword";
 			
 	}
+	
 	
 	
 	@PostMapping("/LogIn")
