@@ -1,5 +1,7 @@
 package com.example.ShareYourWorldWebApp;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +65,17 @@ public class UserController {
 	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin) {
 		if(resLogin.hasErrors())
 			return "LogIn";
+		ArrayList <Utente> utenteFind = (ArrayList<Utente>) userRepository.findAll();
 		
-		return "HomePage_Accesso";
+		for(Utente u: utenteFind) {
+			if(logInForm.getUsername().equals(u.getUsername()) && logInForm.getPassword().equals(u.getPassword())) {	
+				return "HomePage_Accesso";
+			}
+		}
+		return "LogIn";
 		
-	}
+		
+	}  
 	
 	@PostMapping("/registrazione")
     public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
