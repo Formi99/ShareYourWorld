@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.Transient;
+
 
 @Entity
 @Table(name = "utente")
@@ -43,7 +45,7 @@ public class Utente {
     //@Column(name="Email")
 	private String email;
 	
-	
+	@Transient
 	private String confPassword;
 
 	
