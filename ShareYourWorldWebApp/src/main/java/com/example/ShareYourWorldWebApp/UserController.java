@@ -83,9 +83,7 @@ public class UserController {
 	            return "registrazione";
 
 	        Utente u = new Utente();
-	        if(!u.getConfPassword().equals(registrationForm.getEmail())) {
-	        	return "registrazione";
-	        }
+
 	        u.setNome(registrationForm.getNome());
 	        u.setCognome(registrationForm.getCognome());
 	        u.setUsername(registrationForm.getUsername());
