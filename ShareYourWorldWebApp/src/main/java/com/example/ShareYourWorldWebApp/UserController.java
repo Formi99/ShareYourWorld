@@ -29,13 +29,10 @@ import com.example.ShareYourWorldWebApp.models.Utente;
 public class UserController {
 	@Autowired
     UserDao userRepository;
-
-
 	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
-		return "LogIn";
-			
+		return "LogIn";			
 	}
 	@GetMapping("/GestioneProfilo")
 	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm) {
@@ -72,12 +69,9 @@ public class UserController {
 	}
 	@GetMapping("/CambiaPassword")
 	public String changepsw () {
-		return "CambiaPassword";
-			
+		return "CambiaPassword";		
 	}
-	
-	
-	
+
 	@PostMapping("/LogIn")
 	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin ,HttpSession session) {
 		if(resLogin.hasErrors())
@@ -96,8 +90,6 @@ public class UserController {
 		return "LogIn";
 
 	}  
-	
-	
 	@PostMapping("/registrazione")
     public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
         if(result.hasErrors())
