@@ -5,7 +5,7 @@ import com.example.models.Utente;
 
 
 
-public interface UserRepository extends CrudRepository<Utente, Integer> {
+public interface UserDao extends CrudRepository<Utente, Integer> {
 
 }
 

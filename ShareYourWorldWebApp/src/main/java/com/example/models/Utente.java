@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class Utente {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private int Id;
+	private Integer Id;
 	
 	@Size(min=3, max=15, message = "Nome deve esser tra 4 e 15 caratteri")
 	@NotNull(message = "Nome deve esser inserito")

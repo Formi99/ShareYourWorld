@@ -18,7 +18,7 @@ public class RegistrationForm {
 	String email;
 	
 	
-<<<<<<< HEAD
+
 	public String getNome() {
 		return nome;
 	}
@@ -31,8 +31,7 @@ public class RegistrationForm {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-=======
->>>>>>> c43e07a396f06bb6194fdc487a91ecd24e27bff6
+
 	
 	public String getUsername() {
 		return username;
