@@ -86,9 +86,9 @@ public class UserController {
 				session.setAttribute("username", u.getUsername());
 				session.setAttribute("password", u.getPassword());
 				session.setAttribute("email", u.getEmail());
-				String username = (String) session.getAttribute(u.getUsername());
-				String password = (String) session.getAttribute(u.getPassword());
-				String email = (String) session.getAttribute(u.getEmail());
+				String username = (String) session.getAttribute("username");
+				String password = (String) session.getAttribute("password");
+				String email = (String) session.getAttribute("email");
 			
 				return "HomePage_Accesso";
 			}
@@ -117,12 +117,5 @@ public class UserController {
         }
         return"DatiSalvati";
     }
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
 
->>>>>>> 2bca96e3273fb1db2fc2167f5b475a506eb76165
 }
