@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.ShareYourWorldWebApp.models;
 
 
 
@@ -38,7 +38,7 @@ public class Utente {
     //@Column(name="Password")
 	private String password;
 	
-	@Size(min=3, max=15, message = "Email deve esser tra 4 e 30 caratteri")
+	@Size(min=8, max=50, message = "Email deve esser tra 4 e 30 caratteri")
 	@NotNull(message = "Email deve esser inserito")
     //@Column(name="Email")
 	private String email;
@@ -61,11 +61,11 @@ public class Utente {
 		
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		Id = id;
 	}
 

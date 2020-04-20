@@ -3,9 +3,10 @@ package com.example.ShareYourWorldWebApp;
 import javax.validation.constraints.Size;
 
 public class RegistrationForm {
-	@Size(min=3, max=20)
-	String nome;
 	
+	
+	@Size(min=3, max=20)
+	String nome;	
 	@Size(min=3, max=20)
 	String cognome;
 	@Size(min=3, max=20)
@@ -14,7 +15,7 @@ public class RegistrationForm {
 	String password;
 	@Size(min=3, max=20)
 	String confPassword;
-	@Size(min=7, max=25)
+	@Size(min=7, max=50)
 	String email;
 	
 	
@@ -57,6 +58,6 @@ public class RegistrationForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 
 }

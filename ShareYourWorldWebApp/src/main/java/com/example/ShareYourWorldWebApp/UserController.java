@@ -8,8 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.Repository.UserDao;
-import com.example.models.Utente;
+import com.example.ShareYourWorldWebApp.Repository.UserDao;
+import com.example.ShareYourWorldWebApp.models.Utente;
+
 
 
 
@@ -71,15 +72,15 @@ public class UserController {
 	    public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
 	        if(result.hasErrors())
 	            return "registrazione";
-/*
+
 	        Utente u = new Utente();
+	        
 	        u.setNome(registrationForm.getNome());
 	        u.setCognome(registrationForm.getCognome());
 	        u.setUsername(registrationForm.getUsername());
 	        u.setPassword(registrationForm.getPassword());
 	        u.setEmail(registrationForm.getEmail());
 	        userRepository.save(u);
-	        */
 	        return"DatiSalvati";
 	    }
 

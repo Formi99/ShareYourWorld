@@ -1,7 +1,9 @@
-package com.example.Repository;
+package com.example.ShareYourWorldWebApp.Repository;
 
 import org.springframework.data.repository.CrudRepository;
-import com.example.models.Utente;
+
+import com.example.ShareYourWorldWebApp.models.Utente;
+
 
 
 
