@@ -82,6 +82,7 @@ public class UserController {
         if(result.hasErrors())
             return "registrazione";
 
+        if (registrationForm.getPassword().equals(registrationForm.getconfPassword())) {
         Utente u = new Utente();
         
         u.setNome(registrationForm.getNome());
@@ -90,6 +91,11 @@ public class UserController {
         u.setPassword(registrationForm.getPassword());
         u.setEmail(registrationForm.getEmail());
         userRepository.save(u);
+        
+        }
+        else {
+        	return "registrazione";
+        }
         return"DatiSalvati";
     }
 }
