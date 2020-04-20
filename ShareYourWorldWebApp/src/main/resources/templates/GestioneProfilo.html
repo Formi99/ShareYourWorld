@@ -66,17 +66,17 @@
 
         <div class="container">  
             
-	<form class="form-signin" th:action="@{/GestioneProfilo}" method="GET" th:object="${gestioneProfiloForm}">
+	<form class="form-signin" th:action="@{/LogIn}" method="GET" th:object="${gestioneProfiloForm}">
 				<p>Scheda personale</p>
 				
 	<label for="fname">Username:</label><br>
-        <input type="text" id="fname" th:field="*{username}"name="fname" th:value="${session.getAttribute('Username')}" ><br>
+        <input type="text" id="fname" th:field="*{username}"name="fname" th:text="${u.username}" ><br>
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
 				<label for="lname">E-mail:</label><br>
-        <input type="text" id="lname" name="email" th:field="*{email}" th:value="${session.getAttribute('email')}">
+        <input type="text" id="lname" name="email" th:field="*{email}" th:text="${u.email}">
         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
 				<label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="password" th:field="*{password}"th:value="${session.getAttribute('Password')}"><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
+        <input type="text" id="lname" name="password" th:field="*{password}" th:text="${u.password}" ><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
 
       </form>

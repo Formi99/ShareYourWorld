@@ -2,6 +2,7 @@ package com.example.ShareYourWorldWebApp;
 
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,6 +37,7 @@ public class UserController {
 	}
 	@GetMapping("/GestioneProfilo")
 	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm) {
+	
 		
 		return "GestioneProfilo";
 			
@@ -73,16 +75,20 @@ public class UserController {
 	}
 
 	@PostMapping("/LogIn")
-	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin ,HttpSession session) {
+	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin ,HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		if(resLogin.hasErrors())
 			return "LogIn";
 		ArrayList <Utente> utenteFind = (ArrayList<Utente>) userRepository.findAll();
 		
 		for(Utente u: utenteFind) {
 			if(logInForm.getUsername().equals(u.getUsername()) && logInForm.getPassword().equals(u.getPassword())) {
-				session.setAttribute("Username", u.getUsername());
+				session = request.getSession(true);
+				session.setAttribute("username", u.getUsername());
+				session.setAttribute("password", u.getPassword());
 				session.setAttribute("email", u.getEmail());
-				session.setAttribute("Password", u.getPassword());
+				String username = (String) session.getAttribute(u.getUsername());
+				String password = (String) session.getAttribute(u.getPassword());
+				String email = (String) session.getAttribute(u.getEmail());
 			
 				return "HomePage_Accesso";
 			}
