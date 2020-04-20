@@ -1,5 +1,7 @@
 package com.example.models;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,6 +42,9 @@ public class Utente {
 	@NotNull(message = "Email deve esser inserito")
     //@Column(name="Email")
 	private String email;
+	
+	
+	private String confPassword;
 
 	
 	public Utente() {
@@ -88,6 +93,15 @@ public class Utente {
 		this.cognome = cognome;
 	}
 
+	
+	public String getConfPassword() {
+		return confPassword;
+	}
+
+	public void setConfPassword(String confPassword) {
+		this.confPassword = confPassword;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -103,6 +117,8 @@ public class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 	
 	
 
