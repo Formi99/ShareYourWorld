@@ -77,20 +77,25 @@ public class UserController {
 		
 	}  
 	
-	  @PostMapping("/registrazione")
-	    public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
-	        if(result.hasErrors())
-	            return "registrazione";
+	@PostMapping("/registrazione")
+    public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
+        if(result.hasErrors())
+            return "registrazione";
 
-	        Utente u = new Utente();
-
-	        u.setNome(registrationForm.getNome());
-	        u.setCognome(registrationForm.getCognome());
-	        u.setUsername(registrationForm.getUsername());
-	        u.setPassword(registrationForm.getPassword());
-	        u.setEmail(registrationForm.getEmail());
-	        userRepository.save(u);
-	        return"DatiSalvati";
-	    }
-
+        if (registrationForm.getPassword().equals(registrationForm.getconfPassword())) {
+        Utente u = new Utente();
+        
+        u.setNome(registrationForm.getNome());
+        u.setCognome(registrationForm.getCognome());
+        u.setUsername(registrationForm.getUsername());
+        u.setPassword(registrationForm.getPassword());
+        u.setEmail(registrationForm.getEmail());
+        userRepository.save(u);
+        
+        }
+        else {
+        	return "registrazione";
+        }
+        return"DatiSalvati";
+    }
 }
