@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Creato il: Apr 21, 2020 alle 12:57
+-- Creato il: Apr 21, 2020 alle 14:25
 -- Versione del server: 8.0.18
 -- Versione PHP: 7.3.12
 
@@ -21,6 +21,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `shareyourworld`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `abbonamento`
+--
+
+DROP TABLE IF EXISTS `abbonamento`;
+CREATE TABLE IF NOT EXISTS `abbonamento` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Prezzo` decimal(10,2) NOT NULL,
+  `Validità` int(11) NOT NULL,
+  `Numero_Accesso_file` int(11) NOT NULL,
+  `Tipo` varchar(400) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -43,6 +59,19 @@ CREATE TABLE IF NOT EXISTS `blog` (
 
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(400) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `categoria_pagamento`
+--
+
+DROP TABLE IF EXISTS `categoria_pagamento`;
+CREATE TABLE IF NOT EXISTS `categoria_pagamento` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(400) NOT NULL,
   PRIMARY KEY (`ID`)
@@ -94,6 +123,22 @@ CREATE TABLE IF NOT EXISTS `file` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `lista_acquisti_pagamento`
+--
+
+DROP TABLE IF EXISTS `lista_acquisti_pagamento`;
+CREATE TABLE IF NOT EXISTS `lista_acquisti_pagamento` (
+  `ID_utente` int(11) NOT NULL,
+  `ID_pagamento` int(11) NOT NULL,
+  `ID_abbonamento` int(11) NOT NULL,
+  PRIMARY KEY (`ID_utente`,`ID_pagamento`),
+  KEY `ID_pagamento_effettuato` (`ID_pagamento`),
+  KEY `ID_abbonamento_comprato` (`ID_abbonamento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `lista_chat`
 --
 
@@ -110,6 +155,22 @@ CREATE TABLE IF NOT EXISTS `lista_chat` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `lista_pagamento_file`
+--
+
+DROP TABLE IF EXISTS `lista_pagamento_file`;
+CREATE TABLE IF NOT EXISTS `lista_pagamento_file` (
+  `ID_pagamento` int(11) NOT NULL,
+  `ID_utente` int(11) NOT NULL,
+  `ID_file` int(11) NOT NULL,
+  PRIMARY KEY (`ID_pagamento`,`ID_utente`),
+  KEY `ID_utente_acquisto` (`ID_utente`),
+  KEY `ID_file_acquistato` (`ID_file`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `lista_partecipanti_blog`
 --
 
@@ -121,6 +182,21 @@ CREATE TABLE IF NOT EXISTS `lista_partecipanti_blog` (
   `Data` date NOT NULL,
   PRIMARY KEY (`ID_utente`,`ID_blog`),
   KEY `ID_blog` (`ID_blog`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `pagamento`
+--
+
+DROP TABLE IF EXISTS `pagamento`;
+CREATE TABLE IF NOT EXISTS `pagamento` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Data` date NOT NULL,
+  `ID_categoria` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ID_categ` (`ID_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -150,6 +226,14 @@ ALTER TABLE `categoria_per_file`
   ADD CONSTRAINT `ID_file` FOREIGN KEY (`ID_File`) REFERENCES `file` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Limiti per la tabella `lista_acquisti_pagamento`
+--
+ALTER TABLE `lista_acquisti_pagamento`
+  ADD CONSTRAINT `ID_abbonamento_comprato` FOREIGN KEY (`ID_abbonamento`) REFERENCES `abbonamento` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ID_pagamento_effettuato` FOREIGN KEY (`ID_pagamento`) REFERENCES `pagamento` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ID_utente_acquistato` FOREIGN KEY (`ID_utente`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Limiti per la tabella `lista_chat`
 --
 ALTER TABLE `lista_chat`
@@ -157,11 +241,25 @@ ALTER TABLE `lista_chat`
   ADD CONSTRAINT `ID_utente_chiamato` FOREIGN KEY (`ID_utente_chiamato`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Limiti per la tabella `lista_pagamento_file`
+--
+ALTER TABLE `lista_pagamento_file`
+  ADD CONSTRAINT `ID_file_acquistato` FOREIGN KEY (`ID_file`) REFERENCES `file` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ID_pagamento` FOREIGN KEY (`ID_pagamento`) REFERENCES `pagamento` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `ID_utente_acquisto` FOREIGN KEY (`ID_utente`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Limiti per la tabella `lista_partecipanti_blog`
 --
 ALTER TABLE `lista_partecipanti_blog`
   ADD CONSTRAINT `ID_blog` FOREIGN KEY (`ID_blog`) REFERENCES `blog` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `ID_utente` FOREIGN KEY (`ID_utente`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Limiti per la tabella `pagamento`
+--
+ALTER TABLE `pagamento`
+  ADD CONSTRAINT `ID_categ` FOREIGN KEY (`ID_categoria`) REFERENCES `categoria_pagamento` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
