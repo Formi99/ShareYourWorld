@@ -68,8 +68,11 @@
             
 	
 				<p>Scheda personale</p>
-				
-	<label for="fname">Username: </label><br>
+		<label for="fname">Nome: </label><br>
+        <label id="lname" th:text="${utenteLoggato.nome}"></label>
+        <label for="fname">Cognome: </label><br>
+        <label id="lname" th:text="${utenteLoggato.cognome}"></label>
+		<label for="fname">Username: </label><br>
         <label id="lname" th:text="${utenteLoggato.username}"></label>
 		<label for="lname">E-mail:</label><br>
         <label id="lname" th:text="${utenteLoggato.email}"></label>

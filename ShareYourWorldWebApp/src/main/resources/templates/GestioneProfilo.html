@@ -68,7 +68,13 @@
             
 	<form class="form-signin" th:action="@{/GestioneProfilo}" method="POST" th:object="${gestioneProfiloForm}">
 				<p>Scheda personale</p>
-				
+	
+	<label for="fname">Nome: </label><br>
+        <input type="text" id="fname" th:field="*{nome}"name="fname" th:text="${nome}" ><br>
+        <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" />
+        <label for="fname">Cognome: </label><br>
+        <input type="text" id="fname" th:field="*{cognome}"name="fname" th:text="${cognome}" ><br>
+        <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" />			
 	<label for="fname">Username: </label><br>
         <input type="text" id="fname" th:field="*{username}"name="fname" th:text="${username}" ><br>
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
@@ -76,7 +82,8 @@
         <input type="text" id="lname" name="email" th:field="*{email}" th:text="${email}">
         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
 				<label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="password" th:field="*{password}" th:text="${password}" ><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
+        <input type="text" id="lname" name="password" th:field="*{password}" th:text="${password}" ><br> 
+        <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
        	<input type="submit" value="invia">
       </form>
