@@ -103,15 +103,8 @@ body {
     background-position: 50% 50%;
     background-image: 
   }
-  .form-signin input[name="fname"] {
-      font-family: Ubuntu;
-    border-radius: 25px;
-    background: rgb(120, 120, 120, 0.3);
-    padding: 15px;
-    width: 200px;
-    height: 20px; 
-  }
-  .form-signin input[name="fname"] {
+ 
+.form-signin input[id="lname"] {
     font-family: Ubuntu;
   border-radius: 25px;
   background: rgb(120, 120, 120, 0.3);
@@ -119,7 +112,7 @@ body {
   width: 200px;
   height: 20px; 
 }
-.form-signin input[name="email"] {
+.form-signin input[id="lname"] {
     font-family: Ubuntu;
   border-radius: 25px;
   background: rgb(120, 120, 120, 0.3);
@@ -127,13 +120,29 @@ body {
   width: 200px;
   height: 20px; 
 }
-.form-signin input[name="password"] {
-    font-family: Ubuntu;
-  border-radius: 25px;
-  background: rgb(120, 120, 120, 0.3);
-  padding: 15px;
-  width: 200px;
-  height: 20px; 
+.form-signin input[id="lname"] {
+  font-family: Ubuntu;
+border-radius: 25px;
+background: rgb(120, 120, 120, 0.3);
+padding: 15px;
+width: 200px;
+height: 20px; 
+}
+.form-signin input[id="lname"] {
+  font-family: Ubuntu;
+border-radius: 25px;
+background: rgb(120, 120, 120, 0.3);
+padding: 15px;
+width: 200px;
+height: 20px; 
+}
+.form-signin input[id="lname"] {
+  font-family: Ubuntu;
+border-radius: 25px;
+background: rgb(120, 120, 120, 0.3);
+padding: 15px;
+width: 200px;
+height: 20px; 
 }
 p1{
     font-family: Ubuntu;
@@ -226,3 +235,7 @@ p2{
 .dropdown:hover .dropbtn {
   background-color: rgb(211, 211, 211, 0.4);
 {
+#btt{
+  position: relative;
+  right: 90px;
+}

@@ -52,6 +52,9 @@ public class UserController {
 		gestioneprofiloForm.setEmail(a.getEmail());
 		gestioneprofiloForm.setUsername(a.getUsername());
 		gestioneprofiloForm.setPassword(a.getPassword());
+		gestioneprofiloForm.setNome(a.getNome());
+		gestioneprofiloForm.setCognome(a.getCognome());
+		
 		return "GestioneProfilo";
 	}
 	@PostMapping("/GestioneProfilo")
@@ -68,6 +71,8 @@ public class UserController {
 			a.setUsername(gestioneprofiloForm.getUsername());
 			a.setPassword(gestioneprofiloForm.getPassword());
 			a.setEmail(gestioneprofiloForm.getEmail());
+			a.setNome(gestioneprofiloForm.getNome());
+			a.setCognome(gestioneprofiloForm.getCognome());
 			userRepository.save(a);
 			session.setAttribute("loggedUser", a);
 			return "redirect:/DatiSalvati";

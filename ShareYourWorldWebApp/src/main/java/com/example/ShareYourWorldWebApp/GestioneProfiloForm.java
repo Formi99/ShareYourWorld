@@ -3,8 +3,26 @@ package com.example.ShareYourWorldWebApp;
 import javax.validation.constraints.Size;
 
 public class GestioneProfiloForm {
-	
-	
+	@Size(min=3, max=20)
+	private String nome;
+	@Size(min=3, max=20)
+	private String cognome;	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
 	@Size(min=3, max=20)
 	private String username;
 	
