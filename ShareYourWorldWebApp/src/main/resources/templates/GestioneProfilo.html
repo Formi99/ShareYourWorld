@@ -78,7 +78,7 @@
 				<label for="lname">Password:</label><br>
         <input type="text" id="lname" name="password" th:field="*{password}" th:text="${password}" ><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
-
+       	<input type="submit" value="invia">
       </form>
         
         </div>
