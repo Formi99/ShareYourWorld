@@ -36,13 +36,8 @@ public class UserController {
 		return "LogIn";			
 	}
 	@GetMapping("/GestioneProfilo")
-	public ModelAndView gestioneprofilo (GestioneProfiloForm gestioneprofiloForm , HttpSession session) {
-		Utente a = (Utente) session.getAttribute("loggedUser");
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("DettagliUtente");
-		mav.addObject("utenteLoggato", a);
-
-		return mav;		
+	public String gestioneprofilo () {
+		return "GestioneProfilo";
 	}
 	@GetMapping("/DettagliUtente")
 	public ModelAndView dettUtente(HttpSession session) {
@@ -56,10 +51,22 @@ public class UserController {
 	}
 	
 	@PostMapping("/GestioneProfilo")
-    public String postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result){
+    public String postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session){
         if(result.hasErrors())
             return "GestioneProfilo";
-        return "GestioneProfilo";
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		
+		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) || gestioneprofiloForm.getPassword().equals(a.getPassword()) || gestioneprofiloForm.getEmail().equals(a.getEmail())) {
+			return "GestioneProfilo";
+		}else {
+			a.setUsername(gestioneprofiloForm.getUsername());
+			a.setPassword(gestioneprofiloForm.getPassword());
+			a.setEmail(gestioneprofiloForm.getEmail());
+			userRepository.save(a);
+			session.setAttribute("NewloggedUser", a);
+		}
+
+        return "DatiSalvati";
 	}
 	@GetMapping("/HomePage_Accesso")
 	public String hpaccesso() {
