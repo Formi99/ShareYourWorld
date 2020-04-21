@@ -35,10 +35,6 @@ public class UserController {
 	public String login (LogInForm logInForm) {
 		return "LogIn";			
 	}
-	@GetMapping("/GestioneProfilo")
-	public String gestioneprofilo () {
-		return "GestioneProfilo";
-	}
 	@GetMapping("/DettagliUtente")
 	public ModelAndView dettUtente(HttpSession session) {
 		Utente a = (Utente) session.getAttribute("loggedUser");
@@ -50,23 +46,33 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("/GestioneProfilo")
+	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm, HttpSession session) {
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		gestioneprofiloForm.setEmail(a.getEmail());
+		gestioneprofiloForm.setUsername(a.getUsername());
+		gestioneprofiloForm.setPassword(a.getPassword());
+		return "GestioneProfilo";
+	}
 	@PostMapping("/GestioneProfilo")
-    public String postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session){
-        if(result.hasErrors())
+    public String  postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session, ModelAndView mav){
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		//mav.setViewName("GestioneProfilo");
+		//mav.addObject("utenteLoggato", a); 
+		if(result.hasErrors())
             return "GestioneProfilo";
-		Utente a = (Utente) session.getAttribute("loggedUser");
-		
-		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) || gestioneprofiloForm.getPassword().equals(a.getPassword()) || gestioneprofiloForm.getEmail().equals(a.getEmail())) {
+
+		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) && gestioneprofiloForm.getPassword().equals(a.getPassword()) && gestioneprofiloForm.getEmail().equals(a.getEmail())) {
 			return "GestioneProfilo";
 		}else {
 			a.setUsername(gestioneprofiloForm.getUsername());
 			a.setPassword(gestioneprofiloForm.getPassword());
 			a.setEmail(gestioneprofiloForm.getEmail());
 			userRepository.save(a);
-			session.setAttribute("NewloggedUser", a);
+			session.setAttribute("loggedUser", a);
+			return "redirect:/DatiSalvati";
 		}
 
-        return "DatiSalvati";
 	}
 	@GetMapping("/HomePage_Accesso")
 	public String hpaccesso() {
@@ -136,5 +142,9 @@ public class UserController {
         }
         return"DatiSalvati";
     }
+	@GetMapping("/DatiSalvati")
+	public String datiSalvati () {
+		return "DatiSalvati";			
+	}
 
 }
