@@ -5,7 +5,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>SchedaPersonale</title>
+        <title>Modifica Dati</title>
         
         <link href="/css/CSSGestioneProfilo.css" rel="stylesheet " type="text/css">
     </head>
@@ -66,19 +66,32 @@
 
         <div class="container">  
             
-	<form class="form-signin" th:action="@{/GestioneProfilo}" method="GET" th:object="${gestioneProfiloForm}">
+	<form class="form-signin" th:action="@{/GestioneProfilo}" method="POST" th:object="${gestioneProfiloForm}">
 				<p>Scheda personale</p>
-				
-	<label for="fname">Username:</label><br>
-        <input type="text" id="fname" th:field="*{username}"name="fname" th:value="${session.getAttribute('Username')}" ><br>
-        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
-				<label for="lname">E-mail:</label><br>
-        <input type="text" id="lname" name="email" th:field="*{email}" th:value="${session.getAttribute('email')}">
-        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-				<label for="lname">Password:</label><br>
-        <input type="text" id="lname" name="password" th:field="*{password}"th:value="${session.getAttribute('Password')}"><br> <p1><a href = "CambiaPassword.html">Vuoi cambiare la password? Clicca qui</a></p1>
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+	
+	      <label for="lname">Nome: </label><br>
+        <input type="text" id="lname" th:field="*{nome}"th:text="${nome}" ></input><br>
+        <p1 th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" />
 
+        <label for="aname">Cognome: </label><br>
+        <input type="text" id="lname" th:field="*{cognome}" th:text="${cognome}" ></input><br>
+        <p2 th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" />	
+
+	      <label for="bname">Username: </label><br>
+        <input type="text" id="lname" th:field="*{username}"th:text="${username}" ></input><br>
+        <p3 th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
+
+				<label for="cname">E-mail:</label><br>
+        <input type="text" id="lname" th:field="*{email}" th:text="${email}"></input><br>
+        <p4 th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+
+				<label for="dname">Password:</label><br>
+        <input type="text" id="lname" th:field="*{password}" th:text="${password}" ></input><br> 
+        <p5 th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+
+
+
+       	<input type="submit" id= "btt" class="btn btn-primary" value="invia">
       </form>
         
         </div>

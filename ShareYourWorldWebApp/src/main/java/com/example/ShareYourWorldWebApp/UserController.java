@@ -2,6 +2,7 @@ package com.example.ShareYourWorldWebApp;
 
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,17 +35,53 @@ public class UserController {
 	public String login (LogInForm logInForm) {
 		return "LogIn";			
 	}
+	@GetMapping("/DettagliUtente")
+	public ModelAndView dettUtente(HttpSession session) {
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("DettagliUtente");
+		mav.addObject("utenteLoggato", a);
+
+		return mav;	
+		
+	}
+	
 	@GetMapping("/GestioneProfilo")
-	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm) {
+	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm, HttpSession session) {
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		gestioneprofiloForm.setEmail(a.getEmail());
+		gestioneprofiloForm.setUsername(a.getUsername());
+		gestioneprofiloForm.setPassword(a.getPassword());
+		gestioneprofiloForm.setNome(a.getNome());
+		gestioneprofiloForm.setCognome(a.getCognome());
 		
 		return "GestioneProfilo";
-			
 	}
 	@PostMapping("/GestioneProfilo")
-    public String postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result){
-        if(result.hasErrors())
+    public String  postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session, ModelAndView mav){
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		//mav.setViewName("GestioneProfilo");
+		//mav.addObject("utenteLoggato", a); 
+		if(result.hasErrors())
             return "GestioneProfilo";
-        return "GestioneProfilo";
+
+		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) && gestioneprofiloForm.getPassword().equals(a.getPassword()) && gestioneprofiloForm.getEmail().equals(a.getEmail())) {
+			return "GestioneProfilo";
+		}else {
+			a.setUsername(gestioneprofiloForm.getUsername());
+			a.setPassword(gestioneprofiloForm.getPassword());
+			a.setEmail(gestioneprofiloForm.getEmail());
+			a.setNome(gestioneprofiloForm.getNome());
+			a.setCognome(gestioneprofiloForm.getCognome());
+			userRepository.save(a);
+			session.setAttribute("loggedUser", a);
+			return "redirect:/DatiSalvati";
+		}
+
+	}
+	@GetMapping("/HomePage_Accesso")
+	public String hpaccesso() {
+		return "HomePage_Accesso";
 	}
 
 	@GetMapping("/registrazione")
@@ -73,18 +110,17 @@ public class UserController {
 	}
 
 	@PostMapping("/LogIn")
-	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin ,HttpSession session) {
+	public String postLogin (@Valid LogInForm logInForm, BindingResult resLogin ,HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		if(resLogin.hasErrors())
 			return "LogIn";
 		ArrayList <Utente> utenteFind = (ArrayList<Utente>) userRepository.findAll();
 		
 		for(Utente u: utenteFind) {
 			if(logInForm.getUsername().equals(u.getUsername()) && logInForm.getPassword().equals(u.getPassword())) {
-				session.setAttribute("Username", u.getUsername());
-				session.setAttribute("email", u.getEmail());
-				session.setAttribute("Password", u.getPassword());
-			
-				return "HomePage_Accesso";
+				session = request.getSession(true);
+				session.setAttribute("loggedUser", u);
+
+				return "redirect:/HomePage_Accesso";
 			}
 		}
 		return "LogIn";
@@ -111,12 +147,9 @@ public class UserController {
         }
         return"DatiSalvati";
     }
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
+	@GetMapping("/DatiSalvati")
+	public String datiSalvati () {
+		return "DatiSalvati";			
+	}
 
->>>>>>> 2bca96e3273fb1db2fc2167f5b475a506eb76165
 }
