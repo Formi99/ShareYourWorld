@@ -66,10 +66,10 @@
 
         <div class="container">  
             
-	<form class="form-signin" th:action="@{/LogIn}" method="POST" th:object="${gestioneProfiloForm}">
+	<form class="form-signin" th:action="@{/GestioneProfilo}" method="GET" th:object="${gestioneProfiloForm}">
 				<p>Scheda personale</p>
 				
-	<label for="fname">Username:</label><br>
+	<label for="fname">Username: </label><br>
         <input type="text" id="fname" th:field="*{username}"name="fname" th:text="${username}" ><br>
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />
 				<label for="lname">E-mail:</label><br>

@@ -36,17 +36,34 @@ public class UserController {
 		return "LogIn";			
 	}
 	@GetMapping("/GestioneProfilo")
-	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm) {
-	
-		
-		return "GestioneProfilo";
-			
+	public ModelAndView gestioneprofilo (GestioneProfiloForm gestioneprofiloForm , HttpSession session) {
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("DettagliUtente");
+		mav.addObject("utenteLoggato", a);
+
+		return mav;		
 	}
+	@GetMapping("/DettagliUtente")
+	public ModelAndView dettUtente(HttpSession session) {
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("DettagliUtente");
+		mav.addObject("utenteLoggato", a);
+
+		return mav;	
+		
+	}
+	
 	@PostMapping("/GestioneProfilo")
     public String postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result){
         if(result.hasErrors())
             return "GestioneProfilo";
         return "GestioneProfilo";
+	}
+	@GetMapping("/HomePage_Accesso")
+	public String hpaccesso() {
+		return "HomePage_Accesso";
 	}
 
 	@GetMapping("/registrazione")
@@ -83,14 +100,9 @@ public class UserController {
 		for(Utente u: utenteFind) {
 			if(logInForm.getUsername().equals(u.getUsername()) && logInForm.getPassword().equals(u.getPassword())) {
 				session = request.getSession(true);
-				session.setAttribute("username", u.getUsername());
-				session.setAttribute("password", u.getPassword());
-				session.setAttribute("email", u.getEmail());
-				String username = (String) session.getAttribute("username");
-				String password = (String) session.getAttribute("password");
-				String email = (String) session.getAttribute("email");
-			
-				return "HomePage_Accesso";
+				session.setAttribute("loggedUser", u);
+
+				return "redirect:/HomePage_Accesso";
 			}
 		}
 		return "LogIn";
