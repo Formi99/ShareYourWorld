@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.example.ShareYourWorldWebApp.Repository.CreditCardDao;
 import com.example.ShareYourWorldWebApp.Repository.UserDao;
+import com.example.ShareYourWorldWebApp.models.CartaDiCredito;
 import com.example.ShareYourWorldWebApp.models.Utente;
 
 
@@ -30,6 +31,7 @@ import com.example.ShareYourWorldWebApp.models.Utente;
 public class UserController {
 	@Autowired
     UserDao userRepository;
+	CreditCardDao cardRepository;
 	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
@@ -171,14 +173,23 @@ public class UserController {
 		mav.addObject("loggedUser", a);
 		if (a.getCartaDiCredito()==null) {
 			mav.setViewName("redirect:/AggiungiPagamento");
-			
-			return "redirect:/AggiungiPagamento";
-			
+	
 		}
 			return mav;	
 	}
 	@PostMapping("/AggiungiPagamento")
 	public String aggiungiPagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		CartaDiCredito c = new CartaDiCredito();
+		a.getCartaDiCredito().setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
+		a.getCartaDiCredito().setCv(cartaDiCreditoForm.getCv());
+		a.getCartaDiCredito().setDataScadenza(cartaDiCreditoForm.getDataScadenza());
+		a.getCartaDiCredito().setNumero(cartaDiCreditoForm.getNumero());
+		
+		cardRepository.save(c);
+		userRepository.save(a);
+		session.setAttribute("loggedUser", a);
+
 		
 		
 		return "redirect:/DatiSalvati";

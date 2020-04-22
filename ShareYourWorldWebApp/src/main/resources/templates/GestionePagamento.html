@@ -18,13 +18,13 @@
 		<h2>Dati Pagamento</h2><br>
 		<div class="pagamento">
 			<label for="fname">Nome Titolare: </label><br>
-        	<label id="lname" th:text="${}"></label>
+        	<label id="lname" th:text="${loggedUser.cartaDiCredito.datiProprietario}"></label>
         	<label for="fname">Numero Carta: </label><br>
-        	<label id="lname" th:text="${}"></label>
+        	<label id="lname" th:text="${loggedUser.cartaDiCredito.numero}"></label>
         	<label for="fname">CVV: </label><br>
-        	<label id="lname" th:text="${}"></label>
+        	<label id="lname" th:text="${loggedUser.cartaDiCredito.cv}"></label>
 			<label for="fname">Data Scadenza: </label><br>
-			<label id="lname" th:text="${}"></label>
+			<label id="lname" th:text="${loggedUser.cartaDiCredito.dataScadenza}"></label>
 	
 		</div>
 
