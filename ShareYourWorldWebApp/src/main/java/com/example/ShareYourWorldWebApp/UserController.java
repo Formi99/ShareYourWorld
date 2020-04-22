@@ -1,5 +1,6 @@
 package com.example.ShareYourWorldWebApp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -177,23 +178,23 @@ public class UserController {
 		}
 			return mav;	
 	}
+	
 	@PostMapping("/AggiungiPagamento")
-	public String aggiungiPagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
+	public String aggiungiPagamento (HttpSession session,CartaDiCreditoForm cartaDiCreditoForm,BindingResult result) {
+		if(result.hasErrors())
+			return "AggiungiPagamento";
+		
 		Utente a = (Utente) session.getAttribute("loggedUser");
 		CartaDiCredito c = new CartaDiCredito();
-		a.getCartaDiCredito().setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
-		a.getCartaDiCredito().setCv(cartaDiCreditoForm.getCv());
-		a.getCartaDiCredito().setDataScadenza(cartaDiCreditoForm.getDataScadenza());
-		a.getCartaDiCredito().setNumero(cartaDiCreditoForm.getNumero());
+		c.setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
+		c.setDataScadenza(cartaDiCreditoForm.getDataScadenza());
+		c.setCv(cartaDiCreditoForm.getCv());
+		c.setNumero(cartaDiCreditoForm.getNumero());
 		
-		cardRepository.save(c);
+		a.setCartaDiCredito(c);
 		userRepository.save(a);
-		session.setAttribute("loggedUser", a);
-
-		
 		
 		return "redirect:/DatiSalvati";
-				
+		
 	}
-
 }

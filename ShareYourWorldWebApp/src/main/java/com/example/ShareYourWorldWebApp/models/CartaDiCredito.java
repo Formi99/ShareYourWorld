@@ -22,8 +22,8 @@ public class CartaDiCredito {
 	private String datiProprietario;
 	@Size (min=13, max=16)
 	private String numero;
-	@Min(3)
-	@Max(3)
+	@Min(1)
+	@Max(5)
 	private int cv;
 	private Date dataScadenza;
 	
