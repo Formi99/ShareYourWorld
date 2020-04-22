@@ -126,6 +126,11 @@ public class UserController {
 		return "LogIn";
 
 	}  
+	@GetMapping("/AggiungiPagamento")
+	public String aggiungiPagamento () {
+		return "AggiungiPagamento";			
+	}
+	
 	@PostMapping("/registrazione")
     public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
         if(result.hasErrors())
@@ -157,6 +162,27 @@ public class UserController {
 		session.setAttribute("loggedUser", null);
 
 		return "redirect:/LogIn";
+	}
+	@GetMapping("/GestionePagamento")
+	public ModelAndView gestionePagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("GestionePagamento");
+		mav.addObject("loggedUser", a);
+		if (a.getCartaDiCredito()==null) {
+			mav.setViewName("redirect:/AggiungiPagamento");
+			
+			return "redirect:/AggiungiPagamento";
+			
+		}
+			return mav;	
+	}
+	@PostMapping("/AggiungiPagamento")
+	public String aggiungiPagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
+		
+		
+		return "redirect:/DatiSalvati";
+				
 	}
 
 }

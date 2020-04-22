@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,14 +45,18 @@ public class Utente {
 	@NotNull(message = "Email deve esser inserito")
     //@Column(name="Email")
 	private String email;
-	
+
 	@Transient
 	private String confPassword;
+	@OneToOne
+	private CartaDiCredito cartaDiCredito;
 
 	
 	public Utente() {
 		
 	}
+
+	
 
 	public Utente(int Id,String username,String nome,String cognome,String password,String email){
 		this.Id=Id;
@@ -120,7 +125,13 @@ public class Utente {
 		this.email = email;
 	}
 	
-	
+	public CartaDiCredito getCartaDiCredito() {
+		return cartaDiCredito;
+	}
+
+	public void setCartaDiCredito(CartaDiCredito cartaDiCredito) {
+		this.cartaDiCredito = cartaDiCredito;
+	}
 	
 	
 

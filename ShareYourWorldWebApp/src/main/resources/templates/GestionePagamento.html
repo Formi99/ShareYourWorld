@@ -14,23 +14,22 @@
                           <a href="/LogIn">logout</a>
                           </div> 
                         </div>
-		<form method="GET" action="nomeServlet" >
+		
 		<h2>Dati Pagamento</h2><br>
 		<div class="pagamento">
-			Numero Carta: <input type="text" name="textname" value="getNumero()" ><br> <!-- nella value poi andrà messo il riferimento per i database!-->
-			<p th:if="${#fields.hasErrors('numeroCarta')}" th:errors="*{numeroCarta}" />
-			CVV/CVV2: <input type="text" name="textname" value="getCodice()" ><br> <!-- nella value poi andrà messo il riferimento per i database!-->
-			<p th:if="${#fields.hasErrors('codiceCarta')}" th:errors="*{codiceCarta}" />
-			Data di Scadenza: <input type="data" value="getData()" ><br> <!-- nella value poi andrà messo il riferimento per i database!-->
-			<p th:if="${#fields.hasErrors('dataScad')}" th:errors="*{dataScad}" />
-			Titolare Carta: <input type="textname" value="getProprietario()" ><br> <!-- nella value poi andrà messo il riferimento per i database!-->
-			<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" />
-			Email Conferma: <input type="textname" value="getEmail()" ><br> <!-- nella value poi andrà messo il riferimento per i database!-->
-			<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+			<label for="fname">Nome Titolare: </label><br>
+        	<label id="lname" th:text="${}"></label>
+        	<label for="fname">Numero Carta: </label><br>
+        	<label id="lname" th:text="${}"></label>
+        	<label for="fname">CVV: </label><br>
+        	<label id="lname" th:text="${}"></label>
+			<label for="fname">Data Scadenza: </label><br>
+			<label id="lname" th:text="${}"></label>
+	
 		</div>
 
-		<input type="submit" class="bottone" value="salva" >
+		<p1>Se vuoi cambiare carta di credito<a href="/AggiungiPagamento">Clicca qui</a></p1>
 	
-	</form>
+
 	</body>
 </html>
