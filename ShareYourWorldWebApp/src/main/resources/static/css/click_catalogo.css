@@ -79,7 +79,7 @@ body{
 
 #Trama{
     
-    width: 35%;
+    width: 50%;
     height: 500;
     border: 1px solid black;
     display: inline-block;
@@ -87,6 +87,21 @@ body{
     
 }
 
+#Dettagli{
+    
+    display: inline-block;
+    
+    width: 34%;
+    height: 500;
+    
+    position: absolute;
+    
+}
+
+#Dettagli p{
+    
+    color: black;
+}
 
 
 #trama h3{
@@ -97,6 +112,13 @@ body{
 #trama p{
     color: black;
 }
+
+#Dettagli h3{
+    
+    color: black;
+}
+
+
 
 
 
