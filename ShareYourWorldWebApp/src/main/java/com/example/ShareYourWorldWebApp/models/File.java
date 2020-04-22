@@ -17,6 +17,43 @@ public abstract class File {
 	private Integer AnnoDiUscita;
 	private double prezzo;
 	private String PaeseProvenienza;
+	public Integer getId() {
+		return Id;
+	}
+	public void setId(Integer id) {
+		Id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getGenere() {
+		return genere;
+	}
+	public void setGenere(String genere) {
+		this.genere = genere;
+	}
+	public Integer getAnnoDiUscita() {
+		return AnnoDiUscita;
+	}
+	public void setAnnoDiUscita(Integer annoDiUscita) {
+		AnnoDiUscita = annoDiUscita;
+	}
+	public double getPrezzo() {
+		return prezzo;
+	}
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+	public String getPaeseProvenienza() {
+		return PaeseProvenienza;
+	}
+	public void setPaeseProvenienza(String paeseProvenienza) {
+		PaeseProvenienza = paeseProvenienza;
+	}
+	
 	
 	
 }

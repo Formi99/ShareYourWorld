@@ -60,8 +60,8 @@ public class UserController {
 	@PostMapping("/GestioneProfilo")
     public String  postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session, ModelAndView mav){
 		Utente a = (Utente) session.getAttribute("loggedUser");	
-		//mav.setViewName("GestioneProfilo");
-		//mav.addObject("utenteLoggato", a); 
+		mav.setViewName("GestioneProfilo");
+		mav.addObject("utenteLoggato", a); 
 		if(result.hasErrors())
             return "GestioneProfilo";
 
@@ -150,6 +150,13 @@ public class UserController {
 	@GetMapping("/DatiSalvati")
 	public String datiSalvati () {
 		return "DatiSalvati";			
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.setAttribute("loggedUser", null);
+
+		return "redirect:/LogIn";
 	}
 
 }
