@@ -2,18 +2,28 @@ package com.example.ShareYourWorldWebApp.models;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-
+@Entity
+@Table(name = "carta_di_credito")
 public class CartaDiCredito {
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer Id;
 	
 	@Size (min=5, max=50)
 	private String datiProprietario;
 	@Size (min=13, max=16)
 	private String numero;
-	@Min(3)
-	@Max(3)
+	@Min(1)
+	@Max(5)
 	private int cv;
 	private Date dataScadenza;
 	

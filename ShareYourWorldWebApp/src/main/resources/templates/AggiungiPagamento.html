@@ -5,14 +5,14 @@
 		<link rel="stylesheet" href="StilePag.css" />
 	</head>
 	<body>
-		<form method="GET" action="nomeServlet" >
+		<form method="POST" th:action="@{/AggiungiPagamento}" th:object="${cartaDiCreditoForm}" >
 		<h2>Dati Pagamento</h2><br>
 		<div class="pagamento">
-			Numero Carta: <input type="text" name="textname" placeholder="numero carta" ><br> 
-			CVV/CVV2: <input type="text" name="textname" placeholder="cvv/cvv2" ><br> 
-			Data di Scadenza: <input type="data" placeholder="data" ><br> 
-			Titolare Carta: <input type="textname" placeholder="nome e cognome" ><br> 
-			Email Conferma: <input type="textname" placeholder="email titolare" ><br> 
+			Numero Carta: <input type="text" name="textname"  ><br> 
+			CVV/CVV2: <input type="text" name="textname"   ><br> 
+			Data di Scadenza: <input type="date"  ><br> 
+			Titolare Carta: <input type="textname"  ><br> 
+			
 		</div>
 
 		<input type="submit" class="bottone" value="salva" >

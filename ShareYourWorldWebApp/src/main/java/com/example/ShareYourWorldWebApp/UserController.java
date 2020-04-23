@@ -1,5 +1,6 @@
 package com.example.ShareYourWorldWebApp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -21,8 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.example.ShareYourWorldWebApp.Repository.CreditCardDao;
 import com.example.ShareYourWorldWebApp.Repository.UserDao;
+import com.example.ShareYourWorldWebApp.models.CartaDiCredito;
 import com.example.ShareYourWorldWebApp.models.Utente;
 
 
@@ -30,6 +32,7 @@ import com.example.ShareYourWorldWebApp.models.Utente;
 public class UserController {
 	@Autowired
     UserDao userRepository;
+	CreditCardDao cardRepository;
 	
 	
 	@GetMapping("/LogIn")
@@ -123,6 +126,11 @@ public class UserController {
 		return "LogIn";
 
 	}  
+	@GetMapping("/AggiungiPagamento")
+	public String aggiungiPagamento () {
+		return "AggiungiPagamento";			
+	}
+	
 	@PostMapping("/registrazione")
     public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
         if(result.hasErrors())
@@ -155,10 +163,44 @@ public class UserController {
 
 		return "redirect:/LogIn";
 	}
+<<<<<<< HEAD
 	
 	
 	
 	
+=======
+	@GetMapping("/GestionePagamento")
+	public ModelAndView gestionePagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
+		Utente a = (Utente) session.getAttribute("loggedUser");	
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("GestionePagamento");
+		mav.addObject("loggedUser", a);
+		if (a.getCartaDiCredito()==null) {
+			mav.setViewName("redirect:/AggiungiPagamento");
+	
+		}
+			return mav;	
+	}
+	
+	@PostMapping("/AggiungiPagamento")
+	public String aggiungiPagamento (HttpSession session,CartaDiCreditoForm cartaDiCreditoForm,BindingResult result) {
+		if(result.hasErrors())
+			return "AggiungiPagamento";
+		
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		CartaDiCredito c = new CartaDiCredito();
+		c.setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
+		c.setDataScadenza(cartaDiCreditoForm.getDataScadenza());
+		c.setCv(cartaDiCreditoForm.getCv());
+		c.setNumero(cartaDiCreditoForm.getNumero());
+		
+		a.setCartaDiCredito(c);
+		userRepository.save(a);
+		
+		return "redirect:/DatiSalvati";
+		
+	}
+>>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
 }
 	
 	
