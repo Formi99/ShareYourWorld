@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,7 +138,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/registrazione")
-    public String postRegistrazione(HttpServletResponse response , @Valid RegistrationForm registrationForm, BindingResult result){
+    public String postRegistrazione(HttpServletRequest request, HttpSession session ,HttpServletResponse response , @Valid RegistrationForm registrationForm, BindingResult result){
         if(result.hasErrors())
             return "registrazione";
 
@@ -155,20 +156,52 @@ public class UserController {
         else {
         	return "registrazione";
         }
-        return"DatiSalvati";
-        response.sendRedirect("LogIn");
+        return"DatiSalvatiReg";
+        
         
     }
 	@GetMapping("/DatiSalvati")
 	public String datiSalvati () {
 		return "DatiSalvati";			
 	}
+	@GetMapping("/DatiSalvatiReg")
+	public String datiSalvatiReg (HttpSession session) {
+		session.invalidate();
+		return "DatiSalvatiReg";			
+	}
+	@GetMapping("/Contattaci")
+	public String contattaci () {
+		return "Contattaci";			
+	}
+	
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		session.setAttribute("loggedUser", null);
+		//session.setAttribute("loggedUser", null);
+		session.invalidate();
 
 		return "redirect:/LogIn";
+	}
+
+	@GetMapping("/BarraRicerca")
+	public String barraricerca (HttpSession session) {
+		
+		Utente u= (Utente) session.getAttribute("loggedUser");
+		
+	
+		return "BarraRicerca";
+			
+	}
+	
+
+	@GetMapping("/Pagina_chat")
+	public String chat (HttpSession session) {
+		
+		Utente u= (Utente) session.getAttribute("loggedUser");
+		
+	
+		return "Pagina_chat";
+			
 	}
 
 	@GetMapping("/GestionePagamento")
@@ -209,18 +242,7 @@ public class UserController {
 		
 		return "redirect:/DatiSalvati";
 	}
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	
-=======
->>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
->>>>>>> 6be7db6ec7379e56dc781a06c0367de3f50a2017
->>>>>>> f96840719066c2fc61a7662ce44b835d853f3038
->>>>>>> be3e1cdedb50e22738d04f670cd454a2d685b22f
 }
 	
 	

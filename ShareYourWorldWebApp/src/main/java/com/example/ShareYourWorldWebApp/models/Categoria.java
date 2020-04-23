@@ -1,4 +1,4 @@
-package com.example.ShareYourWorldWebApp.models;
+/* package com.example.ShareYourWorldWebApp.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +21,7 @@ public class Categoria {
 	@NotNull(message = "Nome deve esser inserito")
     //@Column(name="Nome")
 	private String nome;
-	
-	public Categoria(int ID, String nome) {
-		
-		this.ID= ID;
-		this.nome=nome;
-		
-		
-	}
+
 
 	public Integer getID() {
 		return ID;
@@ -47,3 +40,4 @@ public class Categoria {
 	}
 
 }
+*/

@@ -1,4 +1,4 @@
-package com.example.ShareYourWorldWebApp.models;
+/*package com.example.ShareYourWorldWebApp.models;
 
 import javax.persistence.Entity;
 
@@ -16,3 +16,4 @@ public class AnimeManga extends File{
 	
 	
 }
+*/

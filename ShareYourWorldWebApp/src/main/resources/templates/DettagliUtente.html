@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>SchedaPersonale</title>
         
-        <link href="/css/CSSGestioneProfilo.css" rel="stylesheet " type="text/css">
+        <link href="/css/cssdettagli.css" rel="stylesheet " type="text/css">
     </head>
    
     <body>
@@ -69,16 +69,16 @@
             
 	
 				<p>Scheda personale</p>
-		<label for="fname">Nome: </label><br>
-        <label id="lname" th:text="${utenteLoggato.nome}"></label>
-        <label for="fname">Cognome: </label><br>
-        <label id="lname" th:text="${utenteLoggato.cognome}"></label>
-		<label for="fname">Username: </label><br>
-        <label id="lname" th:text="${utenteLoggato.username}"></label>
-		<label for="lname">E-mail:</label><br>
-        <label id="lname" th:text="${utenteLoggato.email}"></label>
-		<label for="lname">Password:</label><br>
-        <label id="lname" th:text="${utenteLoggato.password}"></label>
+		<label for="fname">Nome: </label>
+        <label id="lname" th:text="${utenteLoggato.nome}"></label><br>
+        <label for="fname">Cognome: </label>
+        <label id="lname" th:text="${utenteLoggato.cognome}"></label><br>
+		<label for="fname">Username: </label>
+        <label id="lname" th:text="${utenteLoggato.username}"></label><br>
+		<label for="lname">E-mail:</label>
+        <label id="lname" th:text="${utenteLoggato.email}"></label><br>
+		<label for="lname">Password:</label>
+        <label id="lname" th:text="${utenteLoggato.password}"></label><br>
         <p1>Se vuoi modificare i tuoi dati<a href="/GestioneProfilo" >Clicca qui</a></p1>
 
       </form>

@@ -1,4 +1,4 @@
-package com.example.ShareYourWorldWebApp.models;
+/* package com.example.ShareYourWorldWebApp.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,3 +57,4 @@ public abstract class File {
 	
 	
 }
+*/
