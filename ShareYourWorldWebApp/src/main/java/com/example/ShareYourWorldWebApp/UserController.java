@@ -39,6 +39,7 @@ public class UserController {
 	CardJdbcDao cardJdbc;
 	UserJdbcDao userJdbc;
 	
+	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
 		return "LogIn";			
@@ -102,11 +103,7 @@ public class UserController {
 		return "SceltaCatalogo";
 			
 	}
-	@GetMapping("/BarraRicerca")
-	public String barraricerca () {
-		return "BarraRicerca";
-			
-	}
+	
 	@GetMapping("/GestisciAbbonamento")
 	public String gestabb () {
 		return "GestisciAbbonamento";
@@ -172,6 +169,12 @@ public class UserController {
 
 		return "redirect:/LogIn";
 	}
+<<<<<<< HEAD
+	
+	
+	
+	
+=======
 	@GetMapping("/GestionePagamento")
 	public ModelAndView gestionePagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
 		Utente a = (Utente) session.getAttribute("loggedUser");	
@@ -210,5 +213,16 @@ public class UserController {
 		
 		return "redirect:/DatiSalvati";
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
+>>>>>>> 6be7db6ec7379e56dc781a06c0367de3f50a2017
 }
+	
+	
+	
+	
+	
+
+

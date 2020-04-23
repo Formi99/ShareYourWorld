@@ -70,6 +70,4 @@ public class CartaDiCredito {
 		this.dataScadenza = dataScadenza;
 	}
 
-	
-
 }
