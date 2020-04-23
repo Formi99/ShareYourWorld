@@ -209,7 +209,18 @@ public class UserController {
 		
 		return "redirect:/DatiSalvati";
 	}
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	
+=======
+>>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
+>>>>>>> 6be7db6ec7379e56dc781a06c0367de3f50a2017
+>>>>>>> f96840719066c2fc61a7662ce44b835d853f3038
+>>>>>>> be3e1cdedb50e22738d04f670cd454a2d685b22f
 }
 	
 	

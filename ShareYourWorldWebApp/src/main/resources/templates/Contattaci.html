@@ -1,13 +1,16 @@
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="https://www.dafont.com/it/sambi-lemon.font">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"> 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Cambia Password</title>
-        
-        <link href="css/CSScambiapsw.css" rel="stylesheet " type="text/css">
+        <title>Benvenuto</title>
+        <script src="LogInFunction.js"></script>
+        <link href="css/indexcss.css" rel="stylesheet " type="text/css">
     </head>
    
     <body>
@@ -20,7 +23,7 @@
                         
             <nav class="navbar navbar-md">
                             
-            <div class="navbar-brand">ShareYourWorld</div>
+            <div class="navbar-brand" <a href="/HomePage_Accesso"></a>ShareYourWorld</a></div>
                             
             <ul class="nav">
                             
@@ -55,16 +58,37 @@
                         
                         
                     </div>
+                
+                    <div class="testo">
 
-        <div class="container">  
-            <form class="form-signin" action="loginServlet" method="POST">
-                <p>Vecchia Password:</p><br><input type="password" class="box" name="vpassword" value="getPassword" ><br><br>
-                <p1>Nuova Password:</p1><br><input type="password" class="box" name="npassword" placeholder="Inserisci password" ><br><br>
-                <p2>Ripeti nuova password:</p2> <br><input type="password" class="box" name="rpnpassword" placeholder="Inserisci password" ><br><br>
-                <input type="submit" class= "btn btn-secondary btn-sm" value="invia">
-            </form>
-        
+                   <div id="primo"><p>Per qualsiasi cosa contattaci tramite email:</p>
+                   <div id="secondo"><p>Simone Formicola=s.formicola@itsrizzoli.it</p>
+                   <div id="terzo"><p>Michele Paradiso=m.paradiso@itsrizzoli.it</p>
+                   <div id="quarto"><p>Andrea Rota=a.rota@itsrizzoli.it</p>
+
+                    </div>
+                  
+
+                  <div class="bottoni">
+
+                    <a href="/LogIn" id="buttonlogin" class="btn btn-info" role="button">Accedi</a>
+
+                    <a href="/registrazione" id="buttonreg" class="btn btn-info" role="button">Registrati</a>
+
+
+                    </div>
+
+
+            </div>
+              
         </div>
+        
+    </div>
+
+    
     </body>
 
-</html>    
+
+
+
+</html>

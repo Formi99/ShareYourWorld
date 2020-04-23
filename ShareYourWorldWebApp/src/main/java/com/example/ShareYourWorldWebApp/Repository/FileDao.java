@@ -1,4 +1,4 @@
-/*package com.example.ShareYourWorldWebApp.Repository;
+package com.example.ShareYourWorldWebApp.Repository;
 
 import java.util.List;
 
@@ -17,4 +17,3 @@ public interface FileDao extends CrudRepository<File,Integer>{
 	
 
 }
-*/
