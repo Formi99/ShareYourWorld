@@ -137,7 +137,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/registrazione")
-    public String postRegistrazione(@Valid RegistrationForm registrationForm, BindingResult result){
+    public String postRegistrazione(HttpServletResponse response , @Valid RegistrationForm registrationForm, BindingResult result){
         if(result.hasErrors())
             return "registrazione";
 
@@ -156,6 +156,7 @@ public class UserController {
         	return "registrazione";
         }
         return"DatiSalvati";
+        response.sendRedirect("LogIn");
         
     }
 	@GetMapping("/DatiSalvati")
@@ -169,12 +170,7 @@ public class UserController {
 
 		return "redirect:/LogIn";
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
+
 	@GetMapping("/GestionePagamento")
 	public ModelAndView gestionePagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
 		Utente a = (Utente) session.getAttribute("loggedUser");	
@@ -213,11 +209,7 @@ public class UserController {
 		
 		return "redirect:/DatiSalvati";
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
->>>>>>> 6be7db6ec7379e56dc781a06c0367de3f50a2017
+
 }
 	
 	

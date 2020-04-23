@@ -1,4 +1,4 @@
-package com.example.ShareYourWorldWebApp;
+/* package com.example.ShareYourWorldWebApp;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ import com.example.ShareYourWorldWebApp.models.Utente;
 public class UserControllerFile {
 	
 	@Autowired
-	FileDao fileDao;
+	//FileDao fileDao;
 	UserDao userRepository;
 	CategoriaDao categoriaDao;
 	
@@ -29,9 +29,9 @@ public class UserControllerFile {
 		
 		Utente u= (Utente) session.getAttribute("loggedUser");
 		
-		/*Categoria manga= new Categoria(1,"Manga");
+		Categoria manga= new Categoria(1,"Manga");
 		Categoria musica = new Categoria(2,"Musica");
-		Categoria eBook = new Categoria(2,"");*/
+		Categoria eBook = new Categoria(2,"");
 		Categoria Manga= (Categoria) categoriaDao.findByID(1);
 		Categoria ebook= (Categoria) categoriaDao.findByID(2);
 		Categoria musica= (Categoria) categoriaDao.findByID(3);
@@ -58,6 +58,7 @@ public class UserControllerFile {
 	
 	
 	
-	
+
 
 }
+*/
