@@ -8,10 +8,14 @@
 		<form method="POST" th:action="@{/AggiungiPagamento}" th:object="${cartaDiCreditoForm}" >
 		<h2>Dati Pagamento</h2><br>
 		<div class="pagamento">
-			Numero Carta: <input type="text" name="textname"  ><br> 
-			CVV/CVV2: <input type="text" name="textname"   ><br> 
-			Data di Scadenza: <input type="date"  ><br> 
-			Titolare Carta: <input type="textname"  ><br> 
+			Numero Carta: <input type="text" th:field="*{numero}"  ><br> 
+			<p1 th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}" />
+			CVV/CVV2: <input type="text" th:field="*{cv}"  ><br> 
+			<p2 th:if="${#fields.hasErrors('cv')}" th:errors="*{cv}" />
+			Data di Scadenza: <input type="date" th:field="*{dataScadenza}" ><br>
+			<p3 th:if="${#fields.hasErrors('dataScadenza')}" th:errors="*{dataScadenza}" />
+			Titolare Carta: <input type="text" th:field="*{datiProprietario}" ><br> 
+			<p3 th:if="${#fields.hasErrors('datiProprietario')}" th:errors="*{datiProprietario}" />
 			
 		</div>
 

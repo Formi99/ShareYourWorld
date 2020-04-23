@@ -52,27 +52,30 @@ public class Utente {
 
 	@Transient
 	private String confPassword;
-	//@OneToOne (cascade = CascadeType.ALL)
-	@Transient
-	@Column (name="carta_di_credito_id")
-	private CartaDiCredito cartaDiCredito;
-
 	
+
+	@OneToOne (cascade = CascadeType.ALL)
+	private CartaDiCredito cartaDiCredito;
+	
+
+
+
+
+
+	public CartaDiCredito getCartaDiCredito() {
+		return cartaDiCredito;
+	}
+
+
+	public void setCartaDiCredito(CartaDiCredito cartaDiCredito) {
+		this.cartaDiCredito = cartaDiCredito;
+	}
+
+
 	public Utente() {
 		
 	}
 
-	
-
-	public Utente(int Id,String username,String nome,String cognome,String password,String email){
-		this.Id=Id;
-		this.username=username;
-		this.nome=nome;
-		this.cognome=cognome;
-		this.password=password;
-		this.email=email;
-		
-	}
 
 	public Integer getId() {
 		return Id;
@@ -130,8 +133,10 @@ public class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
 	
-	public CartaDiCredito getCartaDiCredito() {
+	/*public CartaDiCredito getCartaDiCredito() {
 		return cartaDiCredito;
 	}
 
@@ -139,6 +144,6 @@ public class Utente {
 		this.cartaDiCredito = cartaDiCredito;
 	}
 	
-	
+	*/
 
 }

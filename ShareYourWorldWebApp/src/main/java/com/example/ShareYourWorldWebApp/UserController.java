@@ -2,6 +2,7 @@ package com.example.ShareYourWorldWebApp;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ShareYourWorldWebApp.Repository.CardJdbcDao;
 import com.example.ShareYourWorldWebApp.Repository.CreditCardDao;
 import com.example.ShareYourWorldWebApp.Repository.UserDao;
+import com.example.ShareYourWorldWebApp.Repository.UserJdbcDao;
 import com.example.ShareYourWorldWebApp.models.CartaDiCredito;
 import com.example.ShareYourWorldWebApp.models.Utente;
 
@@ -33,6 +36,8 @@ public class UserController {
 	@Autowired
     UserDao userRepository;
 	CreditCardDao cardRepository;
+	CardJdbcDao cardJdbc;
+	UserJdbcDao userJdbc;
 	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
@@ -130,7 +135,7 @@ public class UserController {
 
 	}  
 	@GetMapping("/AggiungiPagamento")
-	public String aggiungiPagamento () {
+	public String aggiungiPagamento (CartaDiCreditoForm cartaDiCreditoForm) {
 		return "AggiungiPagamento";			
 	}
 	
@@ -154,6 +159,7 @@ public class UserController {
         	return "registrazione";
         }
         return"DatiSalvati";
+        
     }
 	@GetMapping("/DatiSalvati")
 	public String datiSalvati () {
@@ -180,21 +186,29 @@ public class UserController {
 	}
 	
 	@PostMapping("/AggiungiPagamento")
-	public String aggiungiPagamento (HttpSession session,CartaDiCreditoForm cartaDiCreditoForm,BindingResult result) {
+	public String aggiungiPagamento (HttpSession session,@Valid CartaDiCreditoForm cartaDiCreditoForm,BindingResult result) {
 		if(result.hasErrors())
 			return "AggiungiPagamento";
 		
 		Utente a = (Utente) session.getAttribute("loggedUser");
 		CartaDiCredito c = new CartaDiCredito();
-		c.setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
 		c.setDataScadenza(cartaDiCreditoForm.getDataScadenza());
 		c.setCv(cartaDiCreditoForm.getCv());
+		c.setDatiProprietario(cartaDiCreditoForm.getDatiProprietario());
 		c.setNumero(cartaDiCreditoForm.getNumero());
 		
 		a.setCartaDiCredito(c);
+		cardRepository.save(c);
 		userRepository.save(a);
 		
-		return "redirect:/DatiSalvati";
 		
+
+		/*cardJdbc.CartaDiCredito(cartaDiCreditoForm.getCv(), cartaDiCreditoForm.getDataScadenza(), cartaDiCreditoForm.getDatiProprietario(), cartaDiCreditoForm.getNumero());
+		CartaDiCredito c= new CartaDiCredito();	
+		userJdbc.Utente(c.getId(), a.getId());
+		*/
+		
+		return "redirect:/DatiSalvati";
 	}
+	
 }
