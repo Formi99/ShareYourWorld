@@ -31,6 +31,7 @@ public class UserController {
 	@Autowired
     UserDao userRepository;
 	
+	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
 		return "LogIn";			
@@ -94,11 +95,7 @@ public class UserController {
 		return "SceltaCatalogo";
 			
 	}
-	@GetMapping("/BarraRicerca")
-	public String barraricerca () {
-		return "BarraRicerca";
-			
-	}
+	
 	@GetMapping("/GestisciAbbonamento")
 	public String gestabb () {
 		return "GestisciAbbonamento";
@@ -158,5 +155,15 @@ public class UserController {
 
 		return "redirect:/LogIn";
 	}
-
+	
+	
+	
+	
 }
+	
+	
+	
+	
+	
+
+
