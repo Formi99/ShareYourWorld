@@ -4,17 +4,22 @@ import java.sql.Date;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class CartaDiCreditoForm {
 	
 	@Size (min=5, max=50)
+	@NotNull
 	private String datiProprietario;
+	@NotNull
 	@Size (min=13, max=16)
 	private String numero;
-	@Min(3)
-	@Max(3)
+	@NotNull
+	@Min(300)
+	@Max(999)
 	private int cv;
+	@NotNull
 	private Date dataScadenza;
 	
 	public String getDatiProprietario() {

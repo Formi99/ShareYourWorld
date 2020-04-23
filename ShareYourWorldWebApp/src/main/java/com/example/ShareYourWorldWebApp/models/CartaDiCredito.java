@@ -1,12 +1,14 @@
 package com.example.ShareYourWorldWebApp.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -25,6 +27,7 @@ public class CartaDiCredito {
 	@Min(1)
 	@Max(5)
 	private int cv;
+	@Temporal (TemporalType.DATE)
 	private Date dataScadenza;
 	
 	public String getDatiProprietario() {
@@ -49,6 +52,14 @@ public class CartaDiCredito {
 
 	public void setCv(int cv) {
 		this.cv = cv;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public Date getDataScadenza() {
