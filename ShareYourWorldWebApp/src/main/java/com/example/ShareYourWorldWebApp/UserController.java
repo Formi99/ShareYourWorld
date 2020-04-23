@@ -163,12 +163,7 @@ public class UserController {
 
 		return "redirect:/LogIn";
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
+
 	@GetMapping("/GestionePagamento")
 	public ModelAndView gestionePagamento (HttpSession session, CartaDiCreditoForm cartaDiCreditoForm) {
 		Utente a = (Utente) session.getAttribute("loggedUser");	
@@ -200,7 +195,6 @@ public class UserController {
 		return "redirect:/DatiSalvati";
 		
 	}
->>>>>>> a062a57197e39ccbdb5fa0fc22af69d98f4ed737
 }
 	
 	
