@@ -41,14 +41,29 @@ public class UserController {
 	UserJdbcDao userJdbc;
 	
 	
+	
+	
+	@GetMapping("/index")
+	public String index (HttpSession session) {
+		session.setAttribute("loginUser", null);
+		return "index";			
+	}
+	
 	@GetMapping("/LogIn")
 	public String login (LogInForm logInForm) {
 		return "LogIn";			
 	}
+	
+	
 	@GetMapping("/DettagliUtente")
 	public ModelAndView dettUtente(HttpSession session) {
-		Utente a = (Utente) session.getAttribute("loggedUser");
 		ModelAndView mav = new ModelAndView();
+		Utente a = (Utente) session.getAttribute("loggedUser");
+		if (session.getAttribute("loggedUser")==null) {
+			mav.setViewName("LogIn");
+			return mav;
+		}
+		
 		mav.setViewName("DettagliUtente");
 		mav.addObject("utenteLoggato", a);
 
@@ -58,6 +73,11 @@ public class UserController {
 	
 	@GetMapping("/GestioneProfilo")
 	public String gestioneprofilo (GestioneProfiloForm gestioneprofiloForm, HttpSession session) {
+		
+		if (session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}else {
+		
 		Utente a = (Utente) session.getAttribute("loggedUser");	
 		gestioneprofiloForm.setEmail(a.getEmail());
 		gestioneprofiloForm.setUsername(a.getUsername());
@@ -66,6 +86,7 @@ public class UserController {
 		gestioneprofiloForm.setCognome(a.getCognome());
 		
 		return "GestioneProfilo";
+		}
 	}
 	@PostMapping("/GestioneProfilo")
     public String  postGestioneProf(@Valid GestioneProfiloForm gestioneprofiloForm, BindingResult result,HttpSession session, ModelAndView mav){
@@ -90,7 +111,10 @@ public class UserController {
 
 	}
 	@GetMapping("/HomePage_Accesso")
-	public String hpaccesso() {
+	public String hpaccesso(HttpSession session) {
+		if (session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}
 		return "HomePage_Accesso";
 	}
 
@@ -100,7 +124,10 @@ public class UserController {
 			
 	}
 	@GetMapping("/SceltaCatalogo")
-	public String sceltacatalogo () {
+	public String sceltacatalogo (HttpSession session) {
+		if(session.getAttribute("loggedUser") == null) {
+			return "redirect:/LogIn";
+		}
 		return "SceltaCatalogo";
 			
 	}
@@ -133,7 +160,11 @@ public class UserController {
 
 	}  
 	@GetMapping("/AggiungiPagamento")
-	public String aggiungiPagamento (CartaDiCreditoForm cartaDiCreditoForm) {
+	public String aggiungiPagamento (CartaDiCreditoForm cartaDiCreditoForm, HttpSession session) {
+		if (session.getAttribute("loggedUser")==null){
+			return "redirect:/LogIn";
+		}
+		
 		return "AggiungiPagamento";			
 	}
 	
@@ -151,6 +182,7 @@ public class UserController {
         u.setPassword(registrationForm.getPassword());
         u.setEmail(registrationForm.getEmail());
         userRepository.save(u);
+        session.setAttribute("loggedUser", null);
         
         }
         else {
@@ -164,9 +196,10 @@ public class UserController {
 	public String datiSalvati () {
 		return "DatiSalvati";			
 	}
+	
 	@GetMapping("/DatiSalvatiReg")
 	public String datiSalvatiReg (HttpSession session) {
-		session.invalidate();
+		session.setAttribute("loggedUser", null);
 		return "DatiSalvatiReg";			
 	}
 	@GetMapping("/Contattaci")
@@ -178,17 +211,17 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		//session.setAttribute("loggedUser", null);
-		session.invalidate();
+		session.setAttribute("loggedUser", null);
 
 		return "redirect:/LogIn";
 	}
 
 	@GetMapping("/BarraRicerca")
 	public String barraricerca (HttpSession session) {
-		
-		Utente u= (Utente) session.getAttribute("loggedUser");
-		
-	
+		if(session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}
+
 		return "BarraRicerca";
 			
 	}
@@ -197,7 +230,9 @@ public class UserController {
 	@GetMapping("/Pagina_chat")
 	public String chat (HttpSession session) {
 		
-		Utente u= (Utente) session.getAttribute("loggedUser");
+		if(session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}
 		
 	
 		return "Pagina_chat";
