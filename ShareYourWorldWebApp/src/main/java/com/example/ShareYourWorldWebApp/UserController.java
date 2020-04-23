@@ -45,7 +45,11 @@ public class UserController {
 	
 	@GetMapping("/index")
 	public String index (HttpSession session) {
+		
 		session.setAttribute("loginUser", null);
+		if(session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}
 		return "index";			
 	}
 	
@@ -60,7 +64,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		Utente a = (Utente) session.getAttribute("loggedUser");
 		if (session.getAttribute("loggedUser")==null) {
-			mav.setViewName("LogIn");
+			mav.setViewName("redirect:/LogIn");
 			return mav;
 		}
 		
@@ -96,7 +100,7 @@ public class UserController {
 		if(result.hasErrors())
             return "GestioneProfilo";
 
-		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) && gestioneprofiloForm.getPassword().equals(a.getPassword()) && gestioneprofiloForm.getEmail().equals(a.getEmail())) {
+		if (gestioneprofiloForm.getUsername().equals(a.getUsername()) && gestioneprofiloForm.getPassword().equals(a.getPassword()) && gestioneprofiloForm.getEmail().equals(a.getEmail()) && gestioneprofiloForm.getNome().equals(a.getNome())&& gestioneprofiloForm.getCognome().equals(a.getCognome())) {
 			return "GestioneProfilo";
 		}else {
 			a.setUsername(gestioneprofiloForm.getUsername());
@@ -116,6 +120,14 @@ public class UserController {
 			return "redirect:/LogIn";
 		}
 		return "HomePage_Accesso";
+	}
+	
+	@GetMapping("/forum")
+	public String forum(HttpSession session) {
+		if (session.getAttribute("loggedUser")==null) {
+			return "redirect:/LogIn";
+		}
+		return "forum";
 	}
 
 	@GetMapping("/registrazione")
@@ -208,12 +220,11 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/logout")
+	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		//session.setAttribute("loggedUser", null);
+		
 		session.setAttribute("loggedUser", null);
-
-		return "redirect:/LogIn";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/BarraRicerca")
